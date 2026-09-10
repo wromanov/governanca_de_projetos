@@ -1,0 +1,199 @@
+# GOV-09-R4 — Evidência de aplicação atômica ao baseline ativo
+
+```text
+ACTIVITY = GOV-09-R4
+EXECUTION_MODE = CONTROLLED_ATOMIC_ACTIVE_BASELINE_WRITE
+EXECUTION_DATE = 2026-09-06
+USER_DECISION_GOV_09_R3 = ACCEPT
+DIRECT_USER_AUTHORIZATION = RECEIVED
+R3_CORRECTED_STAGING = APPROVED_FOR_ACTIVE_BASELINE_APPLICATION
+ACTIVE_BASELINE_WRITE = AUTHORIZED
+POLICY_PROMOTION = NOT_AUTHORIZED
+GIT_STAGE = NOT_AUTHORIZED
+COMMIT = NOT_AUTHORIZED
+PUSH = NOT_AUTHORIZED
+```
+
+## 1. Source R3 identity
+
+```text
+R3_STAGING_PATH = Protocolos em Atualização/GOV-09 - Policy Promotion Preflight/REMEDIATION_STAGE_F01_F02_F03_R3
+R3_IDENTITY_GATE = PASS
+R1_R2_USED_AS_SOURCE = NO
+ABANDONED_STAGES_USED_AS_SOURCE = NO
+F01_REVALIDATION = PASS
+F02_REVALIDATION = PASS
+F03_REVALIDATION = PASS
+OPENING_ZIP_TREE_MISMATCHES = 0
+CONTINUITY_ZIP_TREE_MISMATCHES = 0
+MANIFEST_MISMATCHES = 0
+REGISTRY_HASH_MISMATCHES = 0
+SEMANTIC_START_HERE_MISMATCHES = 0
+SELF_REFERENTIAL_HASH = NO
+UNRELATED_CHANGES = 0
+R3_PROMOTION_ELIGIBILITY = YES
+```
+
+Entrypoints validados no staging:
+
+| Elemento | Tamanho | SHA256 | Papel semântico |
+|---|---:|---|---|
+| `OPENING_PACKAGE/START_HERE.md` | 1101 | `D1CF542E61B7266CC7A5210BCB9247E1E858F7F96AF2E95A409A2F70BFA45D2B` | PROJECT OPENING |
+| `CONTINUITY_PACKAGE/START_HERE.md` | 1673 | `526763B472386396831DD159E37FC1EF86887229A5DD0BC7BF9474653C33712F` | AGENT CONTINUITY |
+
+ZIPs R3 validados:
+
+| ZIP | SHA256 |
+|---|---|
+| `Protocolo-Inicio-de-Abertura-de-Projeto-FINAL-AUDIT.zip` | `33323D54FE755C97B6A65F0FDFFE1E810092F67F0377ACD22C4FFF8FEAC3301B` |
+| `Protocolo-Continuidade-Projeto-Em-Andamento-Com-Novo-Agente-FINAL-AUDIT.zip` | `F84E6B3FFD470EC10425C16B7C5429832ECCF17FF021F44194DC8B00D34DD0E4` |
+
+O registry externo utilizado foi `GOV-09_R3_F01_CORRECTION_EVIDENCE.md`,
+fora dos dois packages e dos dois ZIPs. Ele registra os dois hashes finais
+acima.
+
+## 2. Rollback snapshot
+
+```text
+ROLLBACK_SNAPSHOT_PATH = C:/Users/walac/PycharmProjects/governança_de_projetos/Protocolos em Atualização/GOV-09 - Policy Promotion Preflight/ROLLBACK_SNAPSHOT_GOV_09_R4_20260906_150326
+ROLLBACK_SNAPSHOT_COMPLETE = YES
+SNAPSHOT_SCOPE = 2 árvores ativas + 2 ZIPs ativos
+SNAPSHOT_FILES_VERIFIED = 52
+ACTIVE_BASELINE_DRIFT = NO
+```
+
+Hashes dos ZIPs antes da aplicação:
+
+```text
+OPENING_ACTIVE_ZIP_BEFORE = AF831FEA999E01B020DB3E920291998A43EE4F84626C1DE0BC20E754BC170840
+CONTINUITY_ACTIVE_ZIP_BEFORE = 65FF5FE2A8F02F8D391B60E3D868C417A36B949FF7147E62F2B8831BBE5E2F88
+```
+
+## 3. Application plan lock
+
+```text
+APPLICATION_OPERATIONS = 4
+UNRELATED_OPERATIONS = 0
+```
+
+| ACTION_ID | Tipo | Source | Target | SHA256 esperado da source | SHA256 anterior do target |
+|---|---|---|---|---|---|
+| `GOV09-R4-A01` | F01_REMEDIATION + F02_REMEDIATION | `R3/OPENING_PACKAGE` | `Vigente/Protocolo - Inicio de Abertura de Projeto - Final` | `241CC478B50AD37D052836F494A79DDCA5955869C4E049C951489615768C45F1` | `27DFB0892437534244A61558CF8C7004F283B56298685517A957163F75A838DC` |
+| `GOV09-R4-A02` | F01_REMEDIATION + F02_REMEDIATION | `R3/CONTINUITY_PACKAGE` | `Vigente/Protocolo - Continuidade de Projeto em Andamento Com Novo Agente - Final` | `F6F6F3E468CA3B4FED43B8A47C3AACB3E07E59CA996658C8247C453B821FFDAF` | `100E129069128BDECD5BFA11CC35CF87231656801861FD2A3C986D34C0C195BD` |
+| `GOV09-R4-A03` | F02_REMEDIATION + F03_REMEDIATION | `R3/Protocolo-Inicio-de-Abertura-de-Projeto-FINAL-AUDIT.zip` | ZIP Opening ativo | `33323D54FE755C97B6A65F0FDFFE1E810092F67F0377ACD22C4FFF8FEAC3301B` | `AF831FEA999E01B020DB3E920291998A43EE4F84626C1DE0BC20E754BC170840` |
+| `GOV09-R4-A04` | F02_REMEDIATION + F03_REMEDIATION | `R3/Protocolo-Continuidade-Projeto-Em-Andamento-Com-Novo-Agente-FINAL-AUDIT.zip` | ZIP Continuity ativo | `F84E6B3FFD470EC10425C16B7C5429832ECCF17FF021F44194DC8B00D34DD0E4` | `65FF5FE2A8F02F8D391B60E3D868C417A36B949FF7147E62F2B8831BBE5E2F88` |
+
+## 4. Active baseline post-application validation
+
+### F01 — Entrypoints
+
+```text
+ACTIVE_F01 = PASS
+OPENING_START_HERE_SIZE = 1101
+OPENING_START_HERE_SHA256 = D1CF542E61B7266CC7A5210BCB9247E1E858F7F96AF2E95A409A2F70BFA45D2B
+OPENING_START_HERE_ROLE = PROJECT OPENING
+CONTINUITY_START_HERE_SIZE = 1673
+CONTINUITY_START_HERE_SHA256 = 526763B472386396831DD159E37FC1EF86887229A5DD0BC7BF9474653C33712F
+CONTINUITY_START_HERE_ROLE = AGENT CONTINUITY
+```
+
+### F02 — ZIPs, árvores e manifests
+
+```text
+ACTIVE_F02 = PASS
+ACTIVE_OPENING_ZIP_TREE_MISMATCHES = 0
+ACTIVE_CONTINUITY_ZIP_TREE_MISMATCHES = 0
+ACTIVE_MANIFEST_MISMATCHES = 0
+OPENING_ACTIVE_TREE_FILES = 42
+CONTINUITY_ACTIVE_TREE_FILES = 8
+```
+
+Foram comparados path, tamanho, SHA256 e conteúdo dos arquivos dos ZIPs com
+as árvores ativas. Foram validados `STARTER_MANIFEST.md`,
+`CONTINUITY_MANIFEST.md` e `PACKAGE_MANIFEST.md`.
+
+### F03 — Registry externo
+
+```text
+ACTIVE_F03 = PASS
+ACTIVE_OPENING_ZIP_SHA256 = 33323D54FE755C97B6A65F0FDFFE1E810092F67F0377ACD22C4FFF8FEAC3301B
+ACTIVE_CONTINUITY_ZIP_SHA256 = F84E6B3FFD470EC10425C16B7C5429832ECCF17FF021F44194DC8B00D34DD0E4
+ACTIVE_REGISTRY_HASH_MISMATCHES = 0
+SELF_REFERENTIAL_HASH = NO
+```
+
+O registry permanece fora dos ZIPs. O `PROJECT_STATE.md` mantém a referência
+detached para o hash do ZIP Opening; nenhum hash integral autorreferencial foi
+inserido no package.
+
+### Equivalência e conteúdo normativo
+
+```text
+R3_TO_ACTIVE_MISMATCHES = 0
+NORMATIVE_CONTENT_UNCHANGED = YES
+```
+
+As representações promovidas são byte-equivalentes ao R3 validado. A
+verificação normativa excluiu somente `START_HERE.md`, manifests e
+`PROJECT_STATE.md`, que são as representações de entrypoint, packaging,
+proveniência e estado autorizadas nesta remediação; os conteúdos normativos e
+as policy files permaneceram inalterados.
+
+## 5. Atomicidade, arquivos e disposição
+
+```text
+ATOMIC_APPLICATION = PASS
+ROLLBACK_REQUIRED = NO
+ROLLBACK_COMPLETE = NOT_REQUIRED
+ACTIVE_BASELINE_REMEDIATION = PASS
+ACTIVE_PACKAGES_MODIFIED = YES
+POLICY_FILES_MODIFIED = NONE
+UNRELATED_CHANGES = 0
+```
+
+Foram alterados 13 arquivos do baseline ativo, todos pertencentes aos quatro
+targets autorizados:
+
+- `Protocolo - Continuidade de Projeto em Andamento Com Novo Agente - Final/Agent-Continuity-Standard-v1.0/README.md`
+- `Protocolo - Continuidade de Projeto em Andamento Com Novo Agente - Final/CONTINUITY_MANIFEST.md`
+- `Protocolo - Continuidade de Projeto em Andamento Com Novo Agente - Final/PROJECT_SPECIFIC_PAYLOAD/README.md`
+- `Protocolo - Continuidade de Projeto em Andamento Com Novo Agente - Final/START_HERE.md`
+- `Protocolo - Inicio de Abertura de Projeto - Final/Agent-Continuity-Standard-v1.0/README.md`
+- `Protocolo - Inicio de Abertura de Projeto - Final/CONTINUITY_MANIFEST.md`
+- `Protocolo - Inicio de Abertura de Projeto - Final/Project Opening Standard v1.0/PACKAGE_MANIFEST.md`
+- `Protocolo - Inicio de Abertura de Projeto - Final/Project Opening Standard v1.0/PROJECT_STATE.md`
+- `Protocolo - Inicio de Abertura de Projeto - Final/PROJECT_SPECIFIC_PAYLOAD/README.md`
+- `Protocolo - Inicio de Abertura de Projeto - Final/START_HERE.md`
+- `Protocolo - Inicio de Abertura de Projeto - Final/STARTER_MANIFEST.md`
+- `Protocolo-Continuidade-Projeto-Em-Andamento-Com-Novo-Agente-FINAL-AUDIT.zip`
+- `Protocolo-Inicio-de-Abertura-de-Projeto-FINAL-AUDIT.zip`
+
+```text
+OPENING_F01 = RESOLVED
+OPENING_F02 = RESOLVED
+OPENING_F03 = RESOLVED
+PROJECT_OPENING_GATE = NOT_EVALUATED
+READY_TO_RESUME_PROJECT_OPENING = YES
+READY_FOR_POLICY_PROMOTION = NO
+ABANDONED_STAGE_CLEANUP_ELIGIBILITY = YES
+ABANDONED_STAGES_DELETED = NO
+```
+
+Nenhuma policy foi promovida. Prompt Policy v1.6 e Skills & Plugins Policy
+v1.1 permanecem fora do escopo desta atividade.
+
+## 6. Git e final disposition
+
+```text
+FILES_MODIFIED = ACTIVE_BASELINE_TARGETS_ABOVE + THIS_EVIDENCE_FILE
+GIT_STAGE_EXECUTED = NO
+COMMIT_EXECUTED = NO
+PUSH_EXECUTED = NO
+TAG_EXECUTED = NO
+```
+
+```text
+GOV_09_R4_STATUS = PASS
+ACTIVE_BASELINE_REMEDIATION = PASS
+FINAL_DISPOSITION = BASELINE_ATOMICALLY_REMEDIATED; PROJECT_OPENING_GATE_NOT_EVALUATED; POLICY_PROMOTION_NOT_AUTHORIZED
+```
