@@ -43,11 +43,11 @@ Esta é a visão operacional da camada de consulta rápida. Ela é uma distribut
 
 ### PROMPT POLICY
 
-`CURRENT_VERSION = v1.4`  
-`CANDIDATE_VERSION = v1.6`  
-`STATUS = APPROVED CANDIDATE / PENDING CANONICALIZATION; fonte marcada PROPOSED / DRAFT`  
-`FORMAL_SOURCE = Protocolos em Atualização/GOV-07 - Prompt Policy v1.6/Politica-Prompts-Agente-v1.6.md`  
-`QUICK_REFERENCE_COPY = Políticas - Consulta Rápida/Em Atualização/Politica-Prompts-Agente-v1.6.md`
+`CURRENT_VERSION = v1.4`
+`CANDIDATE_VERSION = v1.7-R1`
+`STATUS = CURRENT TEST CANDIDATE / NOT CANONICAL; v1.7 superseded draft preserved in formal source`
+`FORMAL_SOURCE = Protocolos em Atualização/GOV-02 - Prompt Policy v1.7/Politica-Prompts-Agente-v1.7-R1.md`
+`QUICK_REFERENCE_COPY = Políticas - Consulta Rápida/Em Atualização/Politica-Prompts-Agente-v1.7-R1.md`
 
 ### SKILLS & PLUGINS POLICY
 

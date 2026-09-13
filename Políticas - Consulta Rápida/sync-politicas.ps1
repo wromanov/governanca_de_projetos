@@ -26,10 +26,10 @@ $policies = @(
         MirrorRelativePath = 'Atuais\Independencia-Analitica-Agente-v1.md'
     }
     [pscustomobject]@{
-        PolicyId = 'PROMPT_POLICY_V1_6'
-        FileName = 'Politica-Prompts-Agente-v1.6.md'
-        SourceRelativePath = 'Protocolos em Atualização\GOV-07 - Prompt Policy v1.6\Politica-Prompts-Agente-v1.6.md'
-        MirrorRelativePath = 'Em Atualização\Politica-Prompts-Agente-v1.6.md'
+        PolicyId = 'PROMPT_POLICY_V1_7_R1'
+        FileName = 'Politica-Prompts-Agente-v1.7-R1.md'
+        SourceRelativePath = 'Protocolos em Atualização\GOV-02 - Prompt Policy v1.7\Politica-Prompts-Agente-v1.7-R1.md'
+        MirrorRelativePath = 'Em Atualização\Politica-Prompts-Agente-v1.7-R1.md'
     }
     [pscustomobject]@{
         PolicyId = 'SKILLS_PLUGINS_POLICY_V1_1'
@@ -49,6 +49,16 @@ $filesCopied = 0
 $filesIdentical = 0
 $missingSources = @()
 $hashMismatches = @()
+$obsoleteMirrors = @(
+    'Em Atualização\Politica-Prompts-Agente-v1.6.md'
+)
+
+foreach ($obsoleteMirror in $obsoleteMirrors) {
+    $obsoleteMirrorPath = Join-Path $quickReferenceRoot $obsoleteMirror
+    if (Test-Path -LiteralPath $obsoleteMirrorPath -PathType Leaf) {
+        Remove-Item -LiteralPath $obsoleteMirrorPath -Force
+    }
+}
 
 foreach ($policy in $policies) {
     if ([string]::IsNullOrWhiteSpace($policy.SourceRelativePath)) {
