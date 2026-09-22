@@ -1,12 +1,11 @@
-# Política de Geração de Prompts Multiagente — v1.7-R2.3
+# Política de Geração de Prompts Multiagente — v1.7-R2.4
 
 ```text
 STATUS = CANONICAL
 LIFECYCLE = ACTIVE
-PREVIOUS_BASE = Politica-Prompts-Agente-v1.7-R2.2.md
-CONSOLIDATES = Politica-Prompts-Agente-v1.7-R2.2.md
-PREVIOUS_BASE_ROLE = HISTORICAL_NON_AUTHORITATIVE
-REVISION_FOCUS = ACTIVITY_COMPLETION_REPORTING
+PREVIOUS_BASE = Politica-Prompts-Agente-v1.7-R2.3.md
+CONSOLIDATES = Politica-Prompts-Agente-v1.7-R2.3.md
+REVISION_FOCUS = COGNITIVE_DEMAND_CLASSIFICATION + COGNITIVE_MECHANICAL_SPLIT
 MULTIAGENT_ALIGNMENT = AGENTS-Multiagente-Generico-v1.7-R2.1-Roteamento-Economico
 SCOPE = TRANSVERSAL
 DOMAIN_SPECIFIC_CONTENT = PROHIBITED
@@ -98,6 +97,32 @@ REVERSIBILITY
 COGNITIVE_HOTSPOTS
 MECHANICAL_WORK
 OBJECTIVE_VALIDATION_WORK
+
+AMBIGUITY_SCORE
+NOVELTY_SCORE
+COUPLING_SCORE
+INVARIANT_COMPLEXITY_SCORE
+CAUSAL_DEPTH_SCORE
+QUANT_SCIENTIFIC_DEPTH_SCORE
+CONTEXT_RECONCILIATION_SCORE
+PEAK_DIFFICULTY
+HIGH_DIMENSION_COUNT
+CAPABILITY_DEMAND_CLASS
+
+MATERIAL_DECISION_COUNT
+DEPENDENCY_DEPTH
+CONSTRAINT_INTERACTION
+EVIDENCE_VOLUME
+DEFENSIBLE_ALTERNATIVES
+ITERATIVE_REASONING_NEED
+DELIBERATION_DEMAND_CLASS
+
+EXECUTION_RISK_CLASS
+
+COGNITIVE_MECHANICAL_SPLIT
+CLOSED_DECISION_MATERIALIZATION
+ROOT_MUST_READ_SOURCE_TO_MAKE_DECISION
+ROOT_MUST_REVIEW_FINAL_DELTA
 
 ROUTINE_EXECUTION_GATE
 SOL_GATE
@@ -293,6 +318,345 @@ TASK_LARGE != STRONGER_MODEL_REQUIRED
 MANY_FILES != STRONGER_MODEL_REQUIRED
 LONG_CONTEXT != STRONGER_MODEL_REQUIRED
 HIGH_RISK != STRONGER_MODEL_REQUIRED
+SCIENTIFIC_TASK != SOL_REQUIRED
+ARCHITECTURAL_TASK != SOL_REQUIRED
+```
+
+### 5.1 Três eixos independentes
+
+A seleção deve separar:
+
+```text
+CAPABILITY_DEMAND
+→ seleciona MODEL_FAMILY
+
+DELIBERATION_DEMAND
+→ seleciona REASONING_EFFORT dentro da família
+
+EXECUTION_RISK
+→ seleciona rigor de AUTHORITY, VALIDATION, REVIEW e STOP CONDITIONS
+```
+
+Regra central:
+
+```text
+MODEL_FAMILY
+IS_SELECTED_BY
+CAPABILITY_DEMAND
+
+REASONING_EFFORT
+IS_SELECTED_BY
+DELIBERATION_DEMAND
+
+VALIDATION_AND_AUTHORITY
+ARE_SELECTED_BY
+EXECUTION_RISK
+```
+
+Não usar risco, importância, domínio científico ou rótulo arquitetural como
+atalho para selecionar um modelo mais forte.
+
+### 5.2 Capability Demand — C0 a C4
+
+A demanda de capacidade deve ser classificada por dimensões cognitivas de `0–4`.
+
+```text
+AMBIGUITY
+NOVELTY
+COUPLING
+INVARIANT_COMPLEXITY
+CAUSAL_DEPTH
+QUANT_SCIENTIFIC_DEPTH
+CONTEXT_RECONCILIATION
+```
+
+Interpretação geral:
+
+```text
+0 = ausente / fechado / trivial
+1 = baixo
+2 = moderado
+3 = alto
+4 = extremo / excepcional
+```
+
+Guia por dimensão:
+
+| Dimensão | 0 | 2 | 4 |
+|---|---|---|---|
+| `AMBIGUITY` | requisitos fechados | algumas escolhas relevantes | problema fortemente subespecificado |
+| `NOVELTY` | padrão conhecido | adaptação relevante | sem padrão confiável conhecido |
+| `COUPLING` | componente isolado | vários componentes | muitas interdependências materiais |
+| `INVARIANT_COMPLEXITY` | invariantes simples | múltiplos invariantes | invariantes difíceis, conflitantes ou altamente sensíveis |
+| `CAUSAL_DEPTH` | causa direta | diagnóstico multietapa | causalidade difícil/cross-system |
+| `QUANT_SCIENTIFIC_DEPTH` | trivial/ausente | análise técnica não trivial | derivação/modelagem científica difícil |
+| `CONTEXT_RECONCILIATION` | uma fonte | várias fontes compatíveis | authorities/evidências difíceis de reconciliar |
+
+Não somar mecanicamente os pontos.
+
+Calcular:
+
+```text
+PEAK_DIFFICULTY =
+MAX(all cognitive dimensions)
+
+HIGH_DIMENSION_COUNT =
+COUNT(dimensions >= 3)
+```
+
+Classificação:
+
+```text
+C0 =
+NO_MATERIAL_DECISION
+AND SOLUTION_CLOSED
+
+C1 =
+PEAK_DIFFICULTY <= 1
+
+C2 =
+PEAK_DIFFICULTY = 2
+
+C3 =
+PEAK_DIFFICULTY = 3
+OR HIGH_DIMENSION_COUNT >= 2
+
+C4 =
+PEAK_DIFFICULTY = 4
+OR HIGH_DIMENSION_COUNT >= 3
+OR EXCEPTIONAL_CAPABILITY_TRIGGER = PRESENT
+```
+
+A classificação é um instrumento de roteamento, não um score científico exato.
+
+### 5.3 Baseline de família por Capability Demand
+
+```text
+C0
+→ LUNA
+
+C1
+→ LUNA | TERRA conforme julgamento remanescente
+
+C2
+→ TERRA
+
+C3
+→ TERRA por padrão
+→ SOL somente se houver CAPABILITY_GAP material
+
+C4
+→ SOL por padrão
+→ ASTRA somente se ASTRA_SELECTION_GATE = PASS
+```
+
+Importante:
+
+```text
+C3 != SOL_REQUIRED
+```
+
+Um problema difícil ainda pode estar dentro da capacidade de Terra, especialmente
+quando a dificuldade é de deliberação sustentada e não de capacidade.
+
+### 5.4 Deliberation Demand — D0 a D4
+
+A demanda de deliberação mede quanto raciocínio sustentado é necessário **depois**
+de escolhida a família de modelo.
+
+Avaliar:
+
+```text
+MATERIAL_DECISION_COUNT
+DEPENDENCY_DEPTH
+CONSTRAINT_INTERACTION
+EVIDENCE_VOLUME
+NEED_FOR_COUNTERFACTUAL_ANALYSIS
+DEFENSIBLE_ALTERNATIVES
+ITERATIVE_REASONING_NEED
+```
+
+Classificação:
+
+```text
+D0 = decisão já fechada / execução prescrita
+D1 = raciocínio curto
+D2 = raciocínio moderado
+D3 = raciocínio profundo
+D4 = raciocínio excepcionalmente sustentado
+```
+
+Regra:
+
+```text
+DELIBERATION_GAP
+→ INCREASE_EFFORT
+
+CAPABILITY_GAP
+→ INCREASE_MODEL
+```
+
+Não usar esforço extremo para compensar incapacidade real do modelo.
+
+### 5.5 Effort mapping por família
+
+#### Luna
+
+```text
+D0-D2
+→ LUNA / HIGH
+
+D3-D4 analytical work
+→ LUNA / XHIGH WHEN SUPPORTED
+```
+
+Luna Low/Medium não voltam a ser defaults.
+
+#### Terra
+
+```text
+D1-D2
+→ TERRA / MEDIUM
+
+D3
+→ TERRA / HIGH
+
+D4
+→ TERRA / XHIGH WHEN SUPPORTED
+```
+
+Aplicar:
+
+```text
+TERRA_XHIGH
+SHOULD_BE_CONSIDERED
+BEFORE_SOL
+WHEN_THE_GAP_IS_DELIBERATION
+```
+
+Mas:
+
+```text
+DO_NOT_USE_TERRA_XHIGH
+TO_COMPENSATE_FOR_A_TRUE_CAPABILITY_GAP
+```
+
+#### Sol
+
+Depois de `SOL_GATE = PASS`, dimensionar o esforço em vez de usar `HIGH`
+automaticamente:
+
+```text
+D1
+→ SOL / LOW
+
+D2
+→ SOL / MEDIUM
+
+D3-D4
+→ SOL / HIGH
+```
+
+Logo:
+
+```text
+SOL_REQUIRED
+!=
+SOL_HIGH_REQUIRED
+```
+
+Um problema pequeno e bem delimitado pode exigir capacidade Sol sem exigir
+deliberação High.
+
+Se o runtime expuser apenas um perfil Sol com esforço fixo, essa restrição deve
+ser declarada como limitação operacional:
+
+```text
+DESIRED_SOL_EFFORT = <LOW | MEDIUM | HIGH>
+RUNTIME_PROFILE_EFFORT = <actual>
+EFFORT_OVERRIDE_AVAILABLE = YES | NO
+```
+
+Não inventar um perfil inexistente apenas para satisfazer o mapping.
+
+Combinações incoerentes devem ser reavaliadas. Exemplo:
+
+```text
+C4 + D0
+```
+
+normalmente indica classificação incorreta, pois capability excepcional sem
+qualquer decisão remanescente tende a significar que o hotspot já foi fechado.
+
+### 5.6 Execution Risk — R0 a R4
+
+Risco operacional permanece separado da escolha de modelo.
+
+```text
+R0 = read-only / impacto desprezível
+R1 = alteração local e facilmente reversível
+R2 = alteração material, bounded e reversível
+R3 = ação consequencial / publicação / mudança de estado relevante
+R4 = produção, LIVE, financeiro, segurança crítica, irreversibilidade alta
+```
+
+Risco controla:
+
+```text
+AUTHORIZATION_STRENGTH
+VALIDATION_DEPTH
+PRECONDITIONS
+POSTCONDITIONS
+REVIEW_REQUIREMENT
+STOP_ON_MISMATCH
+```
+
+e não:
+
+```text
+MODEL_STRENGTH
+```
+
+Exemplos:
+
+```text
+C0 + D0 + R4
+→ modelo barato pode ser suficiente
+→ authority/validation devem ser rigorosas
+
+C4 + D4 + R0
+→ SOL/HIGH pode ser necessário
+→ atividade continua read-only
+```
+
+### 5.7 Regra de quantificação para arquitetura e ciência
+
+Antes de escalar por domínio:
+
+```text
+HIGH_DIFFICULTY
+MUST_BE_QUANTIFIED
+BEFORE_MODEL_ESCALATION
+```
+
+Portanto:
+
+```text
+ARCHITECTURE
+→ CLASSIFY C + D + R
+
+SCIENCE
+→ CLASSIFY C + D + R
+```
+
+e nunca:
+
+```text
+ARCHITECTURE
+→ AUTOMATIC SOL/HIGH
+
+SCIENCE
+→ AUTOMATIC SOL/HIGH
 ```
 
 ---
@@ -348,6 +712,8 @@ ROOT_BASELINE != ROOT_FLOOR
 técnico real. Não é o menor ROOT permitido.
 
 Terra/High é usado quando existe julgamento técnico elevado.
+
+`Terra / XHigh`, quando suportado, é preferido para `D4` quando o problema continua dentro da capacidade esperada de Terra e o gap é de deliberação, não de capacidade.
 
 ### 6.2.1 Seleção do ROOT pela demanda cognitiva remanescente
 
@@ -465,6 +831,22 @@ Também:
 EXPECTED_SOL_GAIN = MATERIAL
 TERRA_EXPECTED_SUFFICIENCY = NO | MATERIALLY_INFERIOR
 ```
+
+Depois que `SOL_GATE = PASS`, selecionar esforço separadamente:
+
+```text
+SOL / LOW
+→ capability gap real + deliberação curta
+
+SOL / MEDIUM
+→ capability gap real + deliberação moderada
+
+SOL / HIGH
+→ capability gap real + deliberação profunda/sustentada
+```
+
+Não usar `SOL / HIGH` como configuração automática apenas porque Sol foi
+selecionado.
 
 ### 6.4 Astra
 
@@ -634,38 +1016,80 @@ ROLE_EXISTS != ROLE_SHOULD_BE_USED
 PROFILE_AVAILABLE != OFFLOAD_JUSTIFIED
 ```
 
-### 8.4 Root-must-read-anyway penalty
+### 8.4 Evidence duplication vs final review
 
-Antes de delegar, avaliar:
+Antes de delegar, distinguir:
 
 ```text
-ROOT_MUST_CONSUME_SAME_EVIDENCE_ANYWAY = YES | NO
+ROOT_MUST_READ_SOURCE_TO_MAKE_DECISION
 ```
 
-Se o ROOT precisará inevitavelmente:
-
-- ler os mesmos arquivos;
-- revisar o mesmo diff;
-- interpretar os mesmos resultados;
-- decidir o mesmo stage/commit;
-- reconciliar a mesma configuração;
-
-então o valor do offload deve ser descontado pelo contexto duplicado.
+de:
 
 ```text
-IF ROOT_MUST_CONSUME_SAME_EVIDENCE_ANYWAY = YES
+ROOT_MUST_REVIEW_FINAL_DELTA
+```
+
+Esses custos não são equivalentes.
+
+```text
+ROOT_MUST_REVIEW_FINAL_DELTA
+!=
+DUPLICATED_CONTEXT_BY_DEFAULT
+
+REVIEW_COST
+!=
+MATERIALIZATION_COST
+```
+
+Existe penalidade forte quando o subagente precisa absorver praticamente o mesmo
+contexto amplo do ROOT para **redescobrir ou reinterpretar a solução**.
+
+Exemplo:
+
+```text
+ROOT reads all authorities
+→ SUBAGENT rereads all authorities
+→ SUBAGENT re-derives decisions
+→ ROOT rereads everything
+
+DUPLICATED_CONTEXT_COST = HIGH
+```
+
+Não aplicar a mesma penalidade quando o ROOT já fechou a decisão e entrega um
+contrato estreito:
+
+```text
+ROOT reads authorities
+→ closes decisions / invariants
+→ freezes narrow contract
+→ LOWER_TIER materializes
+→ ROOT reviews only final delta
+
+DUPLICATED_CONTEXT_COST = LOW | MODERATE
+```
+
+Portanto:
+
+```text
+IF ROOT_MUST_READ_SOURCE_TO_MAKE_DECISION = YES
+AND LOWER_TIER_MUST_RECONSUME_SAME_SOURCE_CONTEXT = YES
 AND DELEGATED_VOLUME = LOW | MEDIUM
-AND INDEPENDENCE_REQUIRED = NO
-AND DISTINCT_SPECIALIZATION_REQUIRED = NO
-
-THEN:
-
-DUPLICATED_CONTEXT_COST = HIGH_RELATIVE_TO_GAIN
+THEN
 PREFER_DIRECT = YES
 ```
 
-Delegação ainda pode ser válida quando o volume operacional for realmente material,
-os logs/dados forem extensos ou a responsabilidade separada tiver valor próprio.
+Mas:
+
+```text
+IF ROOT_MUST_REVIEW_FINAL_DELTA = YES
+AND LOWER_TIER_RECEIVES_CLOSED_NARROW_CONTRACT = YES
+THEN
+DO_NOT_TREAT_FINAL_REVIEW_AS_FULL_CONTEXT_DUPLICATION
+```
+
+A revisão final do ROOT preserva adjudicação; ela não implica que o ROOT deveria
+ter produzido fisicamente todo o delta.
 
 ### 8.5 Routine Governance / Git Checkpoint
 
@@ -767,6 +1191,162 @@ CURRENT_ROOT_CONTINUES_DIRECTLY
 
 é preferível a criar um novo handoff apenas para economizar algumas operações.
 
+### 8.7 Cognitive–Mechanical Split Gate
+
+Antes de fechar `DIRECT` ou `MULTIAGENT`, verificar se a mesma atividade contém:
+
+```text
+A) COGNITIVE_WORK
+```
+
+como:
+
+- arquitetura;
+- ciência;
+- modelagem;
+- adjudicação;
+- definição de invariantes;
+- definição de contracts;
+- decisões semânticas;
+- interpretação de authorities;
+- resolução de conflitos;
+- escolhas técnicas materiais;
+
+e:
+
+```text
+B) MECHANICAL_MATERIALIZATION
+```
+
+como:
+
+- escrita de documentação;
+- materialização de Authority já definida;
+- atualização factual de estado/roadmap/sprints;
+- implementação prescrita;
+- wiring simples;
+- alterações repetitivas;
+- configuração fechada;
+- geração de arquivos segundo especificação;
+- validações objetivas extensas.
+
+Princípios:
+
+```text
+HIGH_TIER_REASONING
+!=
+HIGH_TIER_MATERIALIZATION
+
+DECISION_OWNER
+!=
+PHYSICAL_WRITER
+
+ROOT_CAN_MATERIALIZE
+!=
+ROOT_SHOULD_MATERIALIZE
+
+ROOT_FINAL_REVIEW
+!=
+ROOT_MUST_AUTHOR_THE_DELTA
+
+DELEGATING_MATERIALIZATION
+!=
+ROOT_DEESCALATION
+```
+
+O ROOT de tier alto pode permanecer responsável pela atividade enquanto um tier
+inferior executa materialização fechada.
+
+Classificar:
+
+```text
+COGNITIVE_MECHANICAL_SPLIT = PRESENT | ABSENT
+```
+
+A materialização só pode ser delegada quando:
+
+```text
+DECISIONS_CLOSED = YES
+SEMANTICS_CLOSED = YES
+INVARIANTS_CLOSED = YES
+SCOPE_BOUNDED = YES
+OWNERSHIP_CLEAR = YES
+UNRESOLVED_MATERIAL_CHOICES = NONE
+HANDOFF_CONTRACT_IS_NARROW = YES
+LOWER_TIER_CAN_MATERIALIZE_WITHOUT_INTERPRETATION = YES
+```
+
+e:
+
+```text
+EXPECTED_MATERIALIZATION_OFFLOAD_GAIN
+>
+HANDOFF_COST
++ CONTEXT_TRANSFER_COST
++ RECONCILIATION_COST
++ EXPECTED_REWORK_COST
+```
+
+Se passar:
+
+```text
+PREFER_SEQUENTIAL_MULTIAGENT = YES
+```
+
+Fluxo preferencial:
+
+```text
+HIGHER_TIER_ROOT
+→ THINK / DESIGN / DECIDE / FREEZE CONTRACT
+
+LOWER_TIER_EXECUTOR
+→ WRITE / IMPLEMENT CLOSED SPECIFICATION
+
+HIGHER_TIER_ROOT
+→ REVIEW / ADJUDICATE / ACCEPT
+```
+
+`PREFER_SEQUENTIAL_MULTIAGENT = YES` não torna delegação obrigatória.
+
+Se o delta mecânico for pequeno demais para amortizar handoff:
+
+```text
+EXECUTION_MODE = DIRECT
+```
+
+continua correto.
+
+#### 8.7.1 Materialization Stop Rule
+
+Se o tier inferior encontrar:
+
+```text
+UNPRESCRIBED_CHOICE
+SEMANTIC_AMBIGUITY
+CONTRACT_CONFLICT
+INVARIANT_CONFLICT
+AUTHORITY_CONFLICT
+ARCHITECTURAL_DECISION
+SCIENTIFIC_DECISION
+```
+
+deve:
+
+```text
+STOP_AFFECTED_SCOPE
+RETURN_TO_ROOT
+```
+
+O tier inferior não resolve por inferência.
+
+Depois:
+
+```text
+ROOT_CLOSES_DECISION
+→ FREEZES_UPDATED_CONTRACT
+→ LOWER_TIER_MAY_CONTINUE
+```
+
 ---
 
 ## 9. G6 — Material Intelligence Routing Gain
@@ -796,6 +1376,13 @@ Antes de converter G6 em `MULTIAGENT`, também exigir:
 
 ```text
 OFFLOAD_MATERIALITY_GATE = PASS
+```
+
+Quando houver hotspot cognitivo seguido de materialização fechada, avaliar
+explicitamente:
+
+```text
+COGNITIVE_MECHANICAL_SPLIT_GATE = PASS | FAIL
 ```
 
 Sem materialidade suficiente:
@@ -851,7 +1438,20 @@ SCRIBE                 = LUNA / HIGH / DOCUMENTATION_BOUNDED
 IMPLEMENTER            = TERRA / MEDIUM_OR_HIGH / WORKSPACE_WRITE
 REVIEWER               = TERRA / HIGH / READ_ONLY
 SECURITY_REVIEWER      = TERRA / HIGH / READ_ONLY
-ARCHITECT              = SOL / HIGH / READ_ONLY
+ARCHITECTURE_REASONING = MODEL_BY_CAPABILITY_CLASS / EFFORT_BY_DELIBERATION_CLASS
+```
+
+Arquitetura não seleciona `Sol / High` automaticamente.
+
+Quando o `SOL_GATE` passar e o ambiente utilizar um perfil registrado fixo como
+`sol_architect`, respeitar a configuração efetivamente disponível desse perfil.
+Se o ambiente permitir selecionar esforço de Sol para o ROOT ou para um perfil
+compatível, aplicar `D1 → Low`, `D2 → Medium`, `D3-D4 → High`.
+
+```text
+ARCHITECTURAL_ROLE
+!=
+AUTOMATIC_SOL_HIGH
 ```
 
 Disponibilidade real deve ser confirmada no ambiente.
@@ -878,6 +1478,54 @@ Use Terra quando ainda houver:
 - interpretação local;
 - escolhas de implementação;
 - entendimento de fluxo.
+
+### 11.2.1 Scribe
+
+```text
+SCRIBE_RECORDS_DECISIONS
+SCRIBE_DOES_NOT_CREATE_DECISIONS
+```
+
+`luna_scribe / High` é preferido para materialização documental bounded quando
+o conteúdo já foi decidido por um ROOT suficiente.
+
+Pode executar:
+
+- documentação factual;
+- `PROJECT_STATE`;
+- roadmap;
+- sprints;
+- changelog;
+- atualização de referências;
+- reconciliação textual factual;
+- formatação de conteúdo normativo já fechado;
+- materialização física de uma Authority já definida.
+
+Materialização física de Authority é permitida somente quando:
+
+```text
+AUTHORITY_PHYSICAL_AUTHORING_BY_SCRIBE = ALLOWED
+
+ONLY_IF:
+
+NORMATIVE_CONTENT_CLOSED = YES
+DECISIONS_CLOSED = YES
+INVARIANTS_CLOSED = YES
+STRUCTURE_DEFINED = YES
+UNRESOLVED_SEMANTIC_CHOICES = NONE
+OWNERSHIP_CLEAR = YES
+```
+
+O Scribe pode **escrever uma decisão já tomada**.
+
+O Scribe não pode **inventar a decisão**.
+
+Se encontrar qualquer escolha material não prescrita:
+
+```text
+STOP_AFFECTED_SCOPE
+RETURN_TO_ROOT
+```
 
 ### 11.3 Validator
 
@@ -1111,6 +1759,7 @@ Formato:
 │ ORCHESTRATOR        = <MODEL> / <EFFORT>                    │
 │ EXECUTION_MODE      = DIRECT | MULTIAGENT                   │
 │ SUBAGENTS           = <NONE | perfis efetivamente usados>   │
+│ FLOW                = <opcional; ex. ROOT → SCRIBE → ROOT>  │
 │ SKILL               = <NONE | nome + uso>                   │
 │ PLUGIN              = <NONE | nome + uso>                   │
 │ NATIVE_EXECUTION    = YES | PARTIAL | NO                    │
@@ -1662,26 +2311,32 @@ Adicionar outros campos apenas quando materialmente necessários.
 
 1. entender objetivo;
 2. identificar authority;
-3. classificar carga cognitiva;
-4. identificar a demanda cognitiva remanescente da atividade atual;
-5. escolher o menor ROOT suficiente;
-6. identificar hotspot;
-7. identificar trabalho mecânico;
-8. identificar validação objetiva;
-9. avaliar DIRECT;
-10. avaliar multiagente e G6;
-11. aplicar `OFFLOAD_MATERIALITY_GATE`;
-12. se houver validação delegável, aplicar `VALIDATION_OFFLOAD_GATE`;
-13. aplicar `ROOT_MUST_CONSUME_SAME_EVIDENCE_ANYWAY`;
-14. aplicar Redundancy Gate;
-15. escolher subagentes mínimos;
-16. avaliar execução nativa;
-17. avaliar Skill;
-18. avaliar Plugin;
-19. montar Card A;
-20. construir Card B aplicando `EXECUTOR_RELEVANCE_TEST`;
-21. executar uma `PROMPT_COMPRESSION_PASS`;
-22. entregar.
+3. pontuar as dimensões de `CAPABILITY_DEMAND`;
+4. derivar `CAPABILITY_DEMAND_CLASS = C0-C4`;
+5. classificar `DELIBERATION_DEMAND = D0-D4`;
+6. classificar `EXECUTION_RISK = R0-R4`;
+7. identificar a demanda cognitiva remanescente;
+8. escolher `MODEL_FAMILY` pela capability demand;
+9. escolher `REASONING_EFFORT` pela deliberation demand;
+10. escolher o menor ROOT suficiente;
+11. identificar hotspots cognitivos;
+12. identificar materialização mecânica;
+13. identificar validação objetiva;
+14. aplicar `COGNITIVE_MECHANICAL_SPLIT_GATE`;
+15. avaliar DIRECT;
+16. avaliar multiagente e G6;
+17. aplicar `OFFLOAD_MATERIALITY_GATE`;
+18. se houver validação delegável, aplicar `VALIDATION_OFFLOAD_GATE`;
+19. distinguir `ROOT_MUST_READ_SOURCE_TO_MAKE_DECISION` de `ROOT_MUST_REVIEW_FINAL_DELTA`;
+20. aplicar Redundancy Gate;
+21. escolher subagentes mínimos;
+22. avaliar execução nativa;
+23. avaliar Skill;
+24. avaliar Plugin;
+25. montar Card A;
+26. construir Card B aplicando `EXECUTOR_RELEVANCE_TEST`;
+27. executar uma `PROMPT_COMPRESSION_PASS`;
+28. entregar.
 
 ---
 
@@ -1722,6 +2377,8 @@ PROMPT_COMPRESSION_QUESTIONS =
 5. Este bloco repete authority que pode ser referenciada por path?
 6. O percentual de conclusão mede esta atividade, e não o projeto inteiro?
 7. `STATUS`, percentual e `COMPLETION_BASIS` são coerentes entre si?
+8. O ROOT está gastando tier alto para materializar algo já decidido?
+9. O tier inferior receberia contrato fechado ou teria de redescobrir a solução?
 ```
 
 Objetivo:
@@ -1957,6 +2614,99 @@ resolver identidade de policy ou interpretar authority:
 ORCHESTRATOR = TERRA / MEDIUM
 ```
 
+## 33.2 Testes de regressão — Cognitive–Mechanical Split
+
+### Teste A — Authority complexa + reconciliação documental material
+
+Entrada:
+
+```text
+ARCHITECTURAL_DECISIONS = OPEN
+DOCUMENTATION_DELTA = MATERIAL
+```
+
+Esperado:
+
+```text
+TERRA / HIGH or XHIGH ROOT
+→ closes Authority / decisions / invariants
+→ LUNA / HIGH SCRIBE materializes Authority/docs
+→ ROOT reviews and adjudicates
+```
+
+`MULTIAGENT` é esperado somente se `OFFLOAD_MATERIALITY_GATE = PASS`.
+
+### Teste B — Authority complexa + delta documental mínimo
+
+Entrada:
+
+```text
+ARCHITECTURAL_DECISIONS = OPEN
+DOCUMENTATION_DELTA = 3 trivial lines
+```
+
+Esperado:
+
+```text
+ROOT = sufficient higher tier
+EXECUTION_MODE = DIRECT
+```
+
+Handoff não se paga.
+
+### Teste C — Design fechado + implementação prescrita material
+
+Entrada:
+
+```text
+DESIGN_CLOSED = YES
+INVARIANTS_CLOSED = YES
+IMPLEMENTATION_FILES = 8
+IMPLEMENTATION_IS_PRESCRIBED = YES
+```
+
+Esperado:
+
+```text
+HIGHER_TIER ROOT
+→ LUNA / HIGH MECHANICAL_IMPLEMENTER
+→ ROOT FINAL REVIEW
+```
+
+se o ganho líquido for material.
+
+### Teste D — Implementação ainda contém escolhas técnicas
+
+Entrada:
+
+```text
+UNRESOLVED_IMPLEMENTATION_CHOICES = YES
+```
+
+Esperado:
+
+```text
+DO_NOT_USE_LUNA_WORKER_FOR_DECISION
+→ ROOT or TERRA_IMPLEMENTER
+```
+
+### Teste E — Luna encontra ambiguidade
+
+Entrada:
+
+```text
+LOWER_TIER_ENCOUNTERS_UNPRESCRIBED_CHOICE = YES
+```
+
+Esperado:
+
+```text
+STOP_AFFECTED_SCOPE
+→ RETURN_TO_ROOT
+→ ROOT_CLOSES_DECISION
+→ LOWER_TIER_CONTINUES_ONLY_WITH_CLOSED_CONTRACT
+```
+
 ---
 
 # PARTE VIII — PRINCÍPIOS FINAIS
@@ -2009,17 +2759,34 @@ ORCHESTRATOR = TERRA / MEDIUM
 44. `COMPLETION_BASIS` explica objetivamente o que foi concluído e o que resta quando necessário.
 45. Atualizações intermediárias de percentual ocorrem por marcos materiais, não por comando.
 46. Activity completion reporting não introduz Bounded Cyclic Execution, Work Units ou cycle ledger.
-47. Se o ganho de Sol/Astra for incerto, usar o menor modelo suficiente.
+47. `MODEL_FAMILY` é selecionada por `CAPABILITY_DEMAND`.
+48. `REASONING_EFFORT` é selecionado por `DELIBERATION_DEMAND`.
+49. Authority/validation/review são dimensionados por `EXECUTION_RISK`.
+50. Arquitetura e ciência não implicam Sol automaticamente.
+51. Dificuldade arquitetural/científica deve ser quantificada antes de escalonamento.
+52. Terra/XHigh deve ser considerado antes de Sol quando o gap for de deliberação.
+53. Terra/XHigh não deve compensar capability gap real.
+54. Sol selecionado não implica Sol/High; effort de Sol é dimensionado separadamente.
+55. `HIGH_TIER_REASONING != HIGH_TIER_MATERIALIZATION`.
+56. `DECISION_OWNER != PHYSICAL_WRITER`.
+57. `ROOT_FINAL_REVIEW != ROOT_MUST_AUTHOR_THE_DELTA`.
+58. `ROOT_MUST_REVIEW_FINAL_DELTA` não constitui duplicated context integral por padrão.
+59. Materialização por tier inferior exige decisões, semântica e invariantes fechados.
+60. Luna pode escrever uma decisão fechada; Luna não deve inventar a decisão.
+61. Ambiguidade material durante materialização retorna ao ROOT.
+62. Delegar materialização não significa de-escalonar o ROOT.
+63. Cognitive–Mechanical Split continua sujeito a `OFFLOAD_MATERIALITY_GATE`.
+64. Se o ganho de Sol/Astra for incerto, usar o menor modelo suficiente.
 
 ---
 
 ## 35. Estado desta revisão
 
 ```text
-VERSION = v1.7-R2.3
+VERSION = v1.7-R2.4
 STATUS = CANONICAL
-PREVIOUS_VERSION = v1.7-R2.2
-REVISION_TYPE = ACTIVITY_COMPLETION_REPORTING
+PREVIOUS_VERSION = v1.7-R2.3
+REVISION_TYPE = COGNITIVE_DEMAND_CLASSIFICATION + COGNITIVE_MECHANICAL_SPLIT
 
 CONSOLIDATES_ECONOMIC_MULTIAGENT_ROUTING = YES
 CONSOLIDATES_SOL_ASTRA_MODEL_GATES = YES
@@ -2046,6 +2813,24 @@ COMPLETION_PERCENT_IS_NOT_SUCCESS_PERCENT = YES
 MATERIAL_MILESTONE_PROGRESS_UPDATES = ALLOWED
 PER_COMMAND_PROGRESS_UPDATES = NO
 
+CAPABILITY_DEMAND_CLASSIFICATION = C0-C4
+DELIBERATION_DEMAND_CLASSIFICATION = D0-D4
+EXECUTION_RISK_CLASSIFICATION = R0-R4
+SIMPLE_SCORE_SUMMATION = PROHIBITED
+PEAK_DIFFICULTY_AND_HIGH_DIMENSION_COUNT = REQUIRED
+MODEL_FAMILY_SELECTED_BY_CAPABILITY = YES
+REASONING_EFFORT_SELECTED_BY_DELIBERATION = YES
+VALIDATION_AUTHORITY_SELECTED_BY_RISK = YES
+TERRA_XHIGH_BEFORE_SOL_FOR_DELIBERATION_GAP = YES
+SOL_EFFORT_SIZED_AFTER_SOL_GATE = YES
+
+COGNITIVE_MECHANICAL_SPLIT_GATE = REQUIRED_WHEN_APPLICABLE
+HIGH_TIER_REASONING_IMPLIES_HIGH_TIER_MATERIALIZATION = NO
+SCRIBE_CLOSED_AUTHORITY_MATERIALIZATION = ALLOWED
+LOWER_TIER_UNPRESCRIBED_CHOICE = RETURN_TO_ROOT
+FINAL_ROOT_REVIEW_IS_FULL_CONTEXT_DUPLICATION = NO
+DELEGATING_MATERIALIZATION_IS_ROOT_DEESCALATION = NO
+
 DUAL_AUDIENCE_OUTPUT = YES
 EXECUTION_DECISION_CARD = REQUIRED
 EXECUTOR_PAYLOAD_CARD = REQUIRED
@@ -2059,6 +2844,7 @@ INTERNAL_ROUTING_WORKSHEET_EXPOSED_TO_EXECUTOR = NO
 BOUNDED_CYCLIC_EXECUTION = EXCLUDED
 
 READY_FOR_USER_REVIEW = NO
-USER_FINAL_APPROVAL = PASS
 CANONICAL_PROMOTION = PASS
 ```
+
+

@@ -5,9 +5,14 @@ UNIVERSAL_STANDARD = Agent-Continuity-Standard-v1.0/AGENT_CONTINUITY_STANDARD.md
 BOOTSTRAP = Agent-Continuity-Standard-v1.0/continuity/NEW_CHAT_BOOTSTRAP_PROMPT.md
 PROJECT_SPECIFIC_PAYLOAD = PROJECT_SPECIFIC_PAYLOAD/
 PROJECT_SPECIFIC_PAYLOAD_REQUIRED_FOR_REAL_HANDOFF = YES
+CANONICAL_POLICY_MAP = CANONICAL_POLICY_MAP.md
 
 Este pacote é universal. Ele não contém identidade, state ou documentos ativos
 de um projeto. `UNIVERSAL_STANDARD != PROJECT_INSTANCE`.
+
+As políticas transversais operacionais estão listadas em
+`CANONICAL_POLICY_MAP.md`. Versões históricas permanecem apenas para
+compatibilidade e não são authorities correntes.
 
 ## Parte A — chat/agente atual
 
