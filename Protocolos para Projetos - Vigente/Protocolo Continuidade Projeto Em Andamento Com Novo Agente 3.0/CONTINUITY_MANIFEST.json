@@ -1,0 +1,99 @@
+{
+  "package_id": "CONTINUITY",
+  "version": "3.0",
+  "status": "CANONICAL",
+  "lifecycle": "ACTIVE",
+  "canonicalization": "YES",
+  "previous_version": "2.0",
+  "supersession": {
+    "supersedes_version": "2.0",
+    "previous_version_status": "PRESERVED_LEGACY_ROLLBACK / SUPERSEDED",
+    "supersession_executed": true,
+    "previous_package_content_modified": false
+  },
+  "governance_contract_version": 1,
+  "user_review_required": false,
+  "project_adoption": "NOT_CLAIMED",
+  "files": [
+    {
+      "path": "START_HERE.md",
+      "role": "PACKAGE_ENTRYPOINT",
+      "size_bytes": 1727,
+      "sha256": "A7B51145FAAEB86063E9F5CBEA3CA55E6C5452A97ECDE286F36CD94CC2E43146"
+    },
+    {
+      "path": "CONTINUITY_PROTOCOL.md",
+      "role": "OPERATIONAL_PROTOCOL",
+      "size_bytes": 9025,
+      "sha256": "262997F3509A856ED450654C9E5C9B9128BEB3F57E1092BC87967DED42D0B5F3"
+    },
+    {
+      "path": "schemas/PROJECT_GOVERNANCE_BINDING.schema.json",
+      "role": "PROJECT_BINDING_SCHEMA",
+      "size_bytes": 10492,
+      "sha256": "B2983CBAD8FA2616325EB3AD6C8CB2B280C0F44942AC469FCF7749BEA2AE5A22"
+    },
+    {
+      "path": "templates/NEW_AGENT_BOOTSTRAP.template.md",
+      "role": "GENERIC_RECOVERY_TEMPLATE",
+      "size_bytes": 2546,
+      "sha256": "CDD124ABAC611E9D2B7BB4C4FDFB3854B9F6DD8A5571A12B05DB0094E079C28C"
+    }
+  ],
+  "manifest_integrity": {
+    "self_hash": "OMITTED_TO_AVOID_CIRCULAR_HASHING",
+    "hash_scope": "All package files listed above; the manifest itself is excluded."
+  },
+  "external_dependencies": [
+    {
+      "id": "PM-00",
+      "version": "1.0",
+      "role": "GOVERNANCE_MATRIX",
+      "status": "CANONICAL / ACTIVE",
+      "resolution": "Resolve externally through the configured Governance Baseline Matrix/Registry; do not vendor a copy."
+    },
+    {
+      "id": "PM-01",
+      "version": "1.0",
+      "role": "PROJECT_CONDUCT_AND_CONTINUITY_POLICY",
+      "status": "CANONICAL / ACTIVE",
+      "resolution": "Resolve externally through the configured Governance Baseline Matrix/Registry; do not vendor a copy."
+    },
+    {
+      "id": "PM-02",
+      "version": "R2.5",
+      "role": "POLICY",
+      "status": "CANONICAL / ACTIVE",
+      "resolution": "Resolve externally through the configured Governance Baseline Matrix/Registry; do not vendor a copy."
+    },
+    {
+      "id": "PM-03",
+      "version": "R2.2",
+      "role": "POLICY",
+      "status": "CANONICAL / ACTIVE",
+      "resolution": "Resolve externally through the configured Governance Baseline Matrix/Registry; do not vendor a copy."
+    },
+    {
+      "id": "PM-04",
+      "version": "1.2",
+      "role": "POLICY",
+      "status": "CANONICAL / ACTIVE",
+      "resolution": "Resolve externally through the configured Governance Baseline Matrix/Registry; do not vendor a copy."
+    },
+    {
+      "id": "PM-05",
+      "version": "1",
+      "role": "POLICY",
+      "status": "CANONICAL / ACTIVE",
+      "resolution": "Resolve externally through the configured Governance Baseline Matrix/Registry; do not vendor a copy."
+    },
+    {
+      "id": "VP-01",
+      "version": "2.0",
+      "role": "VALIDATION_PROTOCOL",
+      "status": "CANONICAL / ACTIVE / VALIDATION_ONLY",
+      "resolution": "Invoke externally when required; this package does not reproduce its validation suite."
+    }
+  ],
+  "opening_protocol_post_handoff": "NOT_REQUIRED_AS_AN_OPERATIONAL_PIN_BY_DEFAULT"
+}

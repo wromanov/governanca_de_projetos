@@ -1,0 +1,553 @@
+ATIVIDADE — ADOÇÃO E VERIFICAÇÃO EVIDENCIADA DE POLÍTICAS
+
+MODO PADRÃO = ADOPT_AND_VERIFY
+
+OBJETIVO
+
+Verificar, com evidência objetiva, se o agente:
+
+1. leu integralmente as políticas entregues nesta atividade;
+2. identificou corretamente identidade, versão, status, escopo e precedência;
+3. reconciliou as políticas entre si sem inventar regras;
+4. deixou de usar regras históricas/superseded como referência operacional;
+5. consegue aplicar as novas regras em decisões concretas;
+6. está apto a utilizar o conjunto entregue como referência operacional nas próximas atividades relevantes.
+
+IMPORTANTE
+
+"Internalizar" nesta atividade significa:
+
+POLICY_OPERATIONAL_ADOPTION =
+usar as políticas entregues como referências operacionais ativas
+dentro do contexto, workspace e authorities disponíveis ao agente.
+
+Não significa:
+
+- alterar memória permanente do modelo;
+- prometer persistência fora do contexto acessível;
+- modificar arquivos de policy;
+- modificar perfis/configuração de agentes;
+- promover documentos de status;
+- criar novas regras.
+
+Não considere a adoção concluída apenas porque o agente consegue resumir os documentos.
+
+SELF_ATTESTATION_ONLY = INSUFFICIENT
+
+A adoção deve ser demonstrada por:
+- identidade das fontes;
+- entendimento de responsabilidades;
+- reconciliação de precedência;
+- verificação de supersession;
+- aplicação em testes de conformidade.
+
+======================================================================
+1. POLICY SET DESTA ATIVIDADE
+======================================================================
+
+POLICIES_TO_ADOPT =
+
+Todos os arquivos de política explicitamente:
+- anexados a esta atividade; ou
+- listados pelo usuário como policies a adotar.
+
+Não ampliar o conjunto por proximidade de diretório, semelhança de nome
+ou inferência.
+
+Se o usuário fornecer uma lista explícita, ela prevalece sobre descoberta automática.
+
+Para cada policy recebida, registrar:
+
+POLICY_ID =
+FILE =
+PATH_OR_SOURCE =
+VERSION =
+STATUS =
+SCOPE =
+RESPONSIBILITY =
+SUPERSEDES =
+DEPENDS_ON =
+CANONICAL_FOR_THIS_ACTIVITY = YES | NO
+
+Se versão, status ou identidade não puderem ser determinados:
+
+POLICY_IDENTITY = AMBIGUOUS
+
+e a adoção não pode ser declarada completa até resolução.
+
+======================================================================
+2. MODOS DE OPERAÇÃO
+======================================================================
+
+MODE = ADOPT_AND_VERIFY | VERIFY_ONLY
+
+ADOPT_AND_VERIFY:
+- ler as policies entregues;
+- reconciliar;
+- assumir operacionalmente o conjunto válido;
+- verificar conformidade.
+
+VERIFY_ONLY:
+- não presumir que a adoção ocorreu;
+- verificar se o comportamento/configuração/referências atuais são compatíveis
+  com as policies entregues;
+- reportar divergências.
+
+Se o usuário não informar modo:
+
+MODE = ADOPT_AND_VERIFY
+
+Esta atividade é READ_ONLY em relação às policies e configurações,
+salvo autorização explícita adicional.
+
+======================================================================
+3. LEITURA OBRIGATÓRIA
+======================================================================
+
+Ler integralmente cada policy do conjunto.
+
+Não se basear somente em:
+- nome do arquivo;
+- cabeçalho;
+- resumo anterior;
+- memória de conversa;
+- versão histórica;
+- descrição fornecida por outro agente.
+
+POLICY_FULL_READ_REQUIRED = YES
+
+Se algum documento não puder ser lido integralmente:
+
+ADOPTION_BLOCKED
+
+Informar exatamente:
+- documento;
+- limitação;
+- trecho/superfície inacessível;
+- impacto na verificação.
+
+======================================================================
+4. MATRIZ DE RESPONSABILIDADE
+======================================================================
+
+Depois da leitura, construir internamente uma matriz:
+
+POLICY_RESPONSIBILITY_MATRIX
+
+Para cada policy:
+- o que ela governa;
+- o que ela NÃO governa;
+- quais decisões ela controla;
+- quais authorities superiores ela respeita;
+- quais outras policies a complementam;
+- quais documentos ela substitui;
+- quais regras dependem de runtime/capability disponível.
+
+Não duplicar responsabilidades artificialmente.
+
+Se duas policies governarem a mesma decisão:
+
+1. verificar precedência explícita;
+2. verificar relação de supersession;
+3. verificar escopo mais específico;
+4. verificar authority superior.
+
+Se permanecer conflito real:
+
+DO_NOT_GUESS
+CONFLICT_REQUIRES_USER_DECISION
+
+======================================================================
+5. PRECEDÊNCIA
+======================================================================
+
+Aplicar a precedência definida pelas próprias authorities recebidas.
+
+Na ausência de regra mais específica, usar:
+
+1. instrução explícita atual do usuário;
+2. authorities/contratos canônicos específicos do projeto;
+3. segurança, operação e limites de authority;
+4. policies transversais aplicáveis segundo seu próprio escopo;
+5. convenções auxiliares.
+
+Uma policy transversal nunca amplia authority concedida pelo usuário
+ou pelo projeto.
+
+CAPABILITY != AUTHORITY
+PERMISSION != MODEL_CAPABILITY
+DELEGATION != AUTHORITY_TRANSFER
+
+======================================================================
+6. SUPERSESSION E HIGIENE DE VERSÃO
+======================================================================
+
+Identificar documentos:
+- CURRENT / ACTIVE;
+- SUPERSEDED;
+- HISTORICAL_ONLY;
+- COMPATIBILITY_ONLY;
+- AMBIGUOUS.
+
+A nova policy não está adotada corretamente se o agente continua tratando
+como operacional uma versão explicitamente substituída.
+
+Executar:
+
+STALE_POLICY_REFERENCE_CHECK
+
+Verificar, quando a superfície estiver disponível:
+- prompts ativos;
+- AGENTS/continuity docs;
+- config/registry;
+- perfis;
+- instruções locais;
+- referências documentais relevantes.
+
+Não alterar arquivos durante esta verificação.
+
+Se houver referência histórica que seja apenas registro/arquivo:
+
+HISTORICAL_REFERENCE != ACTIVE_POLICY_REFERENCE
+
+Não marcar como erro apenas por existir histórico.
+
+======================================================================
+7. EXTRAÇÃO DOS CONTROLES NORMATIVOS
+======================================================================
+
+Não use este prompt como fonte normativa do conteúdo das policies.
+
+As regras reais devem ser extraídas dos documentos entregues.
+
+Para cada policy, identificar:
+
+MANDATORY_RULES =
+PROHIBITIONS =
+DEFAULTS =
+GATES =
+ESCALATION_RULES =
+STOP_CONDITIONS =
+AUTHORITY_BOUNDARIES =
+ROLE_CONTRACTS =
+OUTPUT_CONTRACTS =
+RUNTIME_DEPENDENCIES =
+
+Não inventar valores ausentes.
+
+Quando uma regra depender de runtime, modelo, skill, plugin, perfil ou capability:
+
+VERIFY_RUNTIME_IF_AVAILABLE
+
+Se não puder verificar:
+
+RUNTIME_DEPENDENCY = UNVERIFIED
+
+Não transformar isso automaticamente em policy failure.
+
+======================================================================
+8. VERIFICAÇÃO DE ADOÇÃO — NÃO ACEITAR APENAS RESUMO
+======================================================================
+
+A adoção deve passar por quatro gates.
+
+GATE A — SOURCE IDENTITY
+
+PASS somente se:
+- todas as policies esperadas foram localizadas;
+- versões/status foram identificados;
+- não há identidade concorrente não resolvida.
+
+GATE B — NORMATIVE RECONCILIATION
+
+PASS somente se:
+- responsabilidades foram separadas corretamente;
+- precedência está resolvida;
+- superseded não está sendo usado como current;
+- não existem conflitos normativos não resolvidos.
+
+GATE C — BEHAVIORAL CONFORMANCE
+
+PASS somente se o agente demonstrar aplicação das regras em cenários concretos.
+
+GATE D — FUTURE-USE READINESS
+
+PASS somente se:
+- o agente consegue indicar qual policy governa cada tipo de decisão relevante;
+- sabe quando parar/escalar;
+- sabe preservar authority;
+- sabe evitar fallback para regras históricas.
+
+======================================================================
+9. POLICY-DERIVED CONFORMANCE PROBES
+======================================================================
+
+Gerar de 3 a 7 testes curtos derivados das próprias policies recebidas.
+
+Não usar testes genéricos desconectados das policies.
+
+Cada teste deve conter:
+
+PROBE_ID =
+SOURCE_POLICY =
+SOURCE_SECTION =
+SCENARIO =
+EXPECTED_DECISION =
+ACTUAL_DECISION =
+RESULT = PASS | FAIL
+
+Os probes devem cobrir, quando existirem nas policies:
+
+- escolha de modelo/esforço;
+- DIRECT vs MULTIAGENT;
+- delegação/roles;
+- authority/permission;
+- escalonamento;
+- stop conditions;
+- validation/review;
+- supersession;
+- output/reporting;
+- qualquer mecanismo novo introduzido pela revisão recebida.
+
+Não expor chain-of-thought.
+
+Fornecer apenas:
+- decisão;
+- regra aplicada;
+- evidência/section;
+- resultado.
+
+======================================================================
+10. REGRESSION / LEGACY CHECK
+======================================================================
+
+Verificar se o agente ainda manifesta comportamento incompatível com
+revisões novas.
+
+Procurar especialmente:
+
+LEGACY_BEHAVIOR =
+regra anteriormente válida
+que foi substituída, restringida ou redefinida pelas policies atuais.
+
+Para cada ocorrência:
+
+LEGACY_RULE =
+CURRENT_RULE =
+IMPACT =
+STATUS = RESOLVED | CONFLICT | NOT_APPLICABLE
+
+Não presumir que uma regra antiga continua válida apenas porque já foi usada antes.
+
+======================================================================
+11. PERFIS / CONFIGURAÇÃO / RUNTIME
+======================================================================
+
+Se a policy alterar contratos de agentes, modelos, esforço, roles,
+skills/plugins ou runtime:
+
+comparar, quando acessível:
+
+POLICY_EXPECTATION
+vs
+RUNTIME_CONFIGURATION
+
+Classificar:
+
+COMPATIBLE
+COMPATIBLE_WITH_RUNTIME_LIMITATION
+INCOMPATIBLE
+UNVERIFIED
+
+Não editar perfis ou config sem autorização explícita.
+
+Se a policy permitir algo que o runtime atual não suporta:
+
+POLICY_ADOPTION_CAN_STILL_PASS =
+YES, se a limitação estiver identificada e o agente souber respeitá-la.
+
+Não inventar profiles/capabilities ausentes.
+
+======================================================================
+12. VERIFICAÇÃO DE COMPORTAMENTO FUTURO
+======================================================================
+
+Antes de declarar READY_TO_APPLY, responder internamente:
+
+1. Sei qual policy governa esta decisão?
+2. Sei qual authority tem precedência?
+3. Estou usando uma versão superseded?
+4. Existe gate obrigatório antes de agir?
+5. Existe authority suficiente?
+6. Existe stop condition aplicável?
+7. Minha escolha de modelo/esforço/role decorre da policy atual?
+8. Estou adicionando burocracia que a policy não exige?
+9. Estou omitindo um mecanismo novo introduzido pela revisão?
+10. Se o runtime limitar a policy, sei declarar a limitação em vez de improvisar?
+
+Se qualquer resposta material permanecer incerta:
+
+ADOPTION_BLOCKED
+ou
+READY_WITH_RUNTIME_LIMITATION
+
+conforme o caso.
+
+======================================================================
+13. STATUS DE ADOÇÃO
+======================================================================
+
+Usar somente:
+
+POLICY_ADOPTION_STATE =
+READY_TO_APPLY
+READY_WITH_RUNTIME_LIMITATION
+ADOPTION_BLOCKED
+
+READY_TO_APPLY:
+- todos os gates obrigatórios = PASS;
+- sem conflito normativo não resolvido;
+- policy set identificado;
+- probes de conformidade = PASS.
+
+READY_WITH_RUNTIME_LIMITATION:
+- entendimento e reconciliação = PASS;
+- existe limitação factual de runtime/capability;
+- limitação não impede compreender/aplicar as boundaries válidas;
+- nenhuma regra é inventada para compensar a limitação.
+
+ADOPTION_BLOCKED:
+- policy ausente/inacessível;
+- identidade ambígua;
+- conflito normativo não resolvido;
+- falha material nos probes;
+- versão ativa indefinida;
+- entendimento insuficiente.
+
+======================================================================
+14. RELATÓRIO OBRIGATÓRIO
+======================================================================
+
+Produzir somente um relatório curto e verificável.
+
+POLICY_ADOPTION_REPORT
+
+MODE =
+
+STATUS =
+ACTIVITY_COMPLETION_PERCENT =
+COMPLETION_BASIS =
+
+POLICIES_EXPECTED =
+POLICIES_READ =
+POLICIES_ACTIVE =
+POLICIES_SUPERSEDED =
+POLICIES_HISTORICAL_ONLY =
+
+SOURCE_IDENTITY_GATE = PASS | FAIL
+NORMATIVE_RECONCILIATION_GATE = PASS | FAIL
+BEHAVIORAL_CONFORMANCE_GATE = PASS | FAIL
+FUTURE_USE_READINESS_GATE = PASS | FAIL
+
+CONFLICTS_FOUND =
+AMBIGUITIES_FOUND =
+STALE_ACTIVE_REFERENCES =
+RUNTIME_LIMITATIONS =
+MISSING_CAPABILITIES =
+
+CONFORMANCE_PROBES =
+<resumo de cada PROBE_ID + RESULT>
+
+POLICY_ADOPTION_STATE =
+READY_TO_APPLY
+| READY_WITH_RUNTIME_LIMITATION
+| ADOPTION_BLOCKED
+
+NEXT_ACTION =
+
+======================================================================
+15. COERÊNCIA DO PERCENTUAL
+======================================================================
+
+ACTIVITY_COMPLETION_PERCENT mede somente esta atividade de adoção/verificação.
+
+STATUS = PASS
+→ normalmente ACTIVITY_COMPLETION_PERCENT = 100%
+
+STATUS = BLOCKED
+→ percentual efetivamente concluído antes do blocker
+
+STATUS = FAIL
+→ percentual efetivamente executado
+
+100_PERCENT_COMPLETE != SUCCESS
+
+Se percentual < 100% ou STATUS != PASS:
+
+COMPLETION_BASIS =
+explicar objetivamente o que foi concluído e o que resta.
+
+======================================================================
+16. COMPORTAMENTO APÓS ADOÇÃO
+======================================================================
+
+Se:
+
+POLICY_ADOPTION_STATE = READY_TO_APPLY
+
+então:
+
+- aplicar as policies nas próximas atividades relevantes;
+- não repetir o relatório de adoção a cada resposta;
+- não recitar as policies sem necessidade;
+- usar a versão current/canonical;
+- abandonar regras superseded como referência operacional;
+- preservar authorities específicas do projeto;
+- reexecutar esta verificação quando o usuário entregar revisão nova
+  ou quando surgir conflito real de versão/status.
+
+Se:
+
+POLICY_ADOPTION_STATE = READY_WITH_RUNTIME_LIMITATION
+
+então:
+- aplicar tudo que for suportado;
+- declarar a limitação somente quando ela afetar uma decisão concreta;
+- não inventar workaround normativo.
+
+Se:
+
+POLICY_ADOPTION_STATE = ADOPTION_BLOCKED
+
+então:
+- não afirmar que as novas policies foram assumidas;
+- informar exatamente o blocker;
+- não substituir a policy ausente por memória, versão histórica ou inferência.
+
+======================================================================
+17. REGRA FINAL
+======================================================================
+
+Adoção válida não é:
+
+"Li e entendi."
+
+Adoção válida é:
+
+SOURCE_IDENTIFIED
++
+VERSION_RESOLVED
++
+PRECEDENCE_RECONCILED
++
+SUPERSESSION_RESOLVED
++
+BEHAVIORAL_CONFORMANCE_PASS
++
+AUTHORITY_PRESERVED
++
+READY_FOR_FUTURE_USE
+
+Não gere burocracia textual permanente após a verificação.
+
+A internalização deve ser observável no comportamento futuro.

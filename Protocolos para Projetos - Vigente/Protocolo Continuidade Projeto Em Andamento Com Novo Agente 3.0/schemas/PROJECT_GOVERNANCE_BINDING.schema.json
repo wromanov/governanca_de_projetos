@@ -1,0 +1,446 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "PROJECT_GOVERNANCE_BINDING.schema.json",
+  "title": "Project Governance Binding",
+  "description": "Project-specific pins for its adopted governance baseline and operational protocols. Runtime integrity and global-freshness results are deliberately not persisted here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "governance_contract_version",
+    "project_id",
+    "adopted_governance",
+    "migration"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "description": "First materialized public schema version."
+    },
+    "governance_contract_version": {
+      "const": 1
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adopted_governance": {
+      "$ref": "#/$defs/adoptedGovernance"
+    },
+    "migration": {
+      "$ref": "#/$defs/migration"
+    }
+  },
+  "$defs": {
+    "pin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "id",
+        "version",
+        "sha256"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[A-Fa-f0-9]{64}$",
+          "description": "SHA-256 of the exact adopted authority or protocol bytes."
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional resolution hint; it is not part of identity."
+        },
+        "status_at_adoption": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional historical metadata; current status does not replace or invalidate an intact pin."
+        }
+      }
+    },
+    "authority": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/pin"
+        },
+        {
+          "properties": {
+            "role": {
+              "enum": [
+                "governance_matrix",
+                "project_conduct_policy",
+                "policy",
+                "validation_protocol"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "protocol": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/pin"
+        }
+      ],
+      "description": "An operational protocol actually adopted by the project and needed to reproduce its governed execution. For Continuity 3.0, role is continuity_protocol."
+    },
+    "adoptedGovernance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseline_id",
+        "baseline_version",
+        "recorded_at",
+        "authorities",
+        "protocols"
+      ],
+      "properties": {
+        "baseline_id": {
+          "const": "GOVERNANCE_BASELINE"
+        },
+        "baseline_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recorded_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "adoption_evidence_ref": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional reference to existing evidence for adoption of this baseline. It does not replace authority pins."
+        },
+        "authorities": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/authority"
+          },
+          "allOf": [
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "governance_matrix"
+                  }
+                },
+                "required": [
+                  "role"
+                ]
+              }
+            },
+            {
+              "contains": {
+                "properties": {
+                  "role": {
+                    "const": "project_conduct_policy"
+                  }
+                },
+                "required": [
+                  "role"
+                ]
+              }
+            }
+          ],
+          "description": "The complete set of adopted governance authorities applicable to this project. Include the Matrix and project conduct policy, plus applicable policies and validation authorities."
+        },
+        "protocols": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/protocol"
+          },
+          "description": "Only operational protocols actually adopted by this project and materially needed for reproducibility. Do not list every globally available protocol."
+        }
+      }
+    },
+    "migrationTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "baseline_id",
+            "baseline_version"
+          ],
+          "properties": {
+            "baseline_id": {
+              "const": "GOVERNANCE_BASELINE"
+            },
+            "baseline_version": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "protocols": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/protocol"
+          }
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "baseline"
+          ]
+        },
+        {
+          "required": [
+            "protocols"
+          ]
+        }
+      ]
+    },
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "detail"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recorded_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "migration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "NOT_REQUESTED",
+            "AUTHORIZED",
+            "IN_PROGRESS",
+            "COMPLETED",
+            "BLOCKED"
+          ]
+        },
+        "scope": {
+          "enum": [
+            "BASELINE",
+            "PROTOCOL",
+            "BASELINE_AND_PROTOCOL"
+          ]
+        },
+        "target": {
+          "$ref": "#/$defs/migrationTarget"
+        },
+        "authorization_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocker": {
+          "$ref": "#/$defs/blocker"
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "NOT_REQUESTED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "scope"
+                  ]
+                },
+                {
+                  "required": [
+                    "target"
+                  ]
+                },
+                {
+                  "required": [
+                    "authorization_ref"
+                  ]
+                },
+                {
+                  "required": [
+                    "blocker"
+                  ]
+                },
+                {
+                  "required": [
+                    "completed_at"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "AUTHORIZED",
+                  "IN_PROGRESS"
+                ]
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "required": [
+              "scope",
+              "target",
+              "authorization_ref"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "COMPLETED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "required": [
+              "scope",
+              "target",
+              "authorization_ref",
+              "completed_at"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "state"
+            ]
+          },
+          "then": {
+            "required": [
+              "blocker"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "scope": {
+                "const": "BASELINE"
+              }
+            },
+            "required": [
+              "scope"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "required": [
+                  "baseline"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "scope": {
+                "const": "PROTOCOL"
+              }
+            },
+            "required": [
+              "scope"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "required": [
+                  "protocols"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "scope": {
+                "const": "BASELINE_AND_PROTOCOL"
+              }
+            },
+            "required": [
+              "scope"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "required": [
+                  "baseline",
+                  "protocols"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

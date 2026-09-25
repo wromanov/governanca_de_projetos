@@ -1,0 +1,158 @@
+{
+  "package_id": "PROJECT_OPENING",
+  "version": "3.0",
+  "status": "CANONICAL",
+  "lifecycle": "ACTIVE",
+  "canonicalization": "YES",
+  "previous_version": "2.0",
+  "supersession": {
+    "supersedes_version": "2.0",
+    "previous_version_status": "PRESERVED_LEGACY_ROLLBACK / SUPERSEDED",
+    "supersession_executed": true,
+    "previous_package_content_modified": false
+  },
+  "governance_contract_version": 1,
+  "user_review_required": false,
+  "project_adoption": "NOT_CLAIMED",
+  "opening_2_role": "PRESERVED_LEGACY_ROLLBACK / SUPERSEDED",
+  "normative_owner": "PM-01 owns project-conduct and continuity requirements; this package operationalizes project opening only",
+  "package_composition": {
+    "vendored_vp01": false,
+    "vendored_continuity_protocol_or_templates": false,
+    "project_specific_binding_created": false,
+    "normative_canonical_policy_map": false,
+    "vendored_binding_schema": false,
+    "vendored_policies": false
+  },
+  "external_dependencies": [
+    {
+      "id": "PM-00",
+      "role": "GOVERNANCE_MATRIX",
+      "version": "1.0",
+      "resolution": "Resolve the governed Matrix and current POLICY_REGISTRY.json externally at ../../Matriz Unificada de Políticas/."
+    },
+    {
+      "id": "POLICY_REGISTRY",
+      "role": "AUTHORITY_RESOLUTION",
+      "version": "CURRENT",
+      "resolution": "Read the current registry from the governed governance root for each project; do not vendor it."
+    },
+    {
+      "id": "PM-01",
+      "role": "PROJECT_CONDUCT_AND_CONTINUITY_POLICY",
+      "version": "1.0",
+      "resolution": "Resolve by identity/version/hash through PM-00 and the current Registry; PM-01 remains normative owner."
+    },
+    {
+      "id": "APPLICABLE_POLICIES",
+      "role": "POLICY_SET",
+      "version": "REGISTRY_SELECTED_PER_PROJECT",
+      "resolution": "Resolve only policies applicable to the project through the current Registry; record adopted pins in the project binding."
+    },
+    {
+      "id": "VP-01",
+      "role": "VALIDATION_ONLY",
+      "version": "CURRENT_REGISTRY_VERSION",
+      "resolution": "Resolve and invoke only when required by the applicable validation authority or procedure."
+    },
+    {
+      "id": "CONTINUITY",
+      "role": "OPERATIONAL_PROTOCOL",
+      "version": "3.0",
+      "status": "CANONICAL / ACTIVE",
+      "resolution": "Separate sibling package ../Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0/."
+    },
+    {
+      "id": "PROJECT_GOVERNANCE_BINDING.schema.json",
+      "role": "BINDING_SCHEMA",
+      "version": "Continuity 3.0 package",
+      "resolution": "Reuse the schema at ../Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0/schemas/PROJECT_GOVERNANCE_BINDING.schema.json; do not copy or redefine it."
+    }
+  ],
+  "opening_protocol_post_handoff": "NOT_REQUIRED_AS_AN_OPERATIONAL_PIN_BY_DEFAULT",
+  "manifest_integrity": {
+    "hash_scope": "All package files listed above; the manifest itself is excluded.",
+    "self_hash": "OMITTED_TO_AVOID_CIRCULAR_HASHING"
+  },
+  "files": [
+    {
+      "path": "OPENING_PROTOCOL.md",
+      "role": "OPERATIONAL_PROTOCOL",
+      "size_bytes": 10092,
+      "sha256": "6FA7C89A6481547123B8D904D65D8E553B259F944507D34CA6BA5C265FBC35AD"
+    },
+    {
+      "path": "OPENING_WIZARD.md",
+      "role": "EXECUTABLE_GUIDANCE",
+      "size_bytes": 7296,
+      "sha256": "6372505B170DE4B1010AEC635386AA2A9C23A5ECB89D5A6E7D67E933CCFCF8C5"
+    },
+    {
+      "path": "START_HERE.md",
+      "role": "PACKAGE_ENTRYPOINT",
+      "size_bytes": 3063,
+      "sha256": "C3C403672DA49971F3CD5CE15EC76357A9B0F95D7AED6C002049D588CAA97537"
+    },
+    {
+      "path": "templates/ACTIVE_AUTHORITY_MAP.template.md",
+      "role": "CONDITIONAL_PROJECT_TEMPLATE",
+      "size_bytes": 1466,
+      "sha256": "A06C0F30EB2C815DD4A6C65EA6379340E9C0F68401219C18848FB42A5C97B058"
+    },
+    {
+      "path": "templates/CONTINUITY_RECORD.template.md",
+      "role": "CONDITIONAL_PROJECT_TEMPLATE",
+      "size_bytes": 1538,
+      "sha256": "6B68020E4DA47E3F9281B21B5FD73B2935C1C274D948C529FD70678EF4464146"
+    },
+    {
+      "path": "templates/CONTINUITY_START_HERE.template.md",
+      "role": "CONDITIONAL_PROJECT_TEMPLATE",
+      "size_bytes": 1171,
+      "sha256": "8E0CE254FD02E915CFC1952412886DDFD64CF5B4B1F4895C3A451EC8E20AC6BF"
+    },
+    {
+      "path": "templates/DELIVERY_PLAN.template.md",
+      "role": "CONDITIONAL_PROJECT_TEMPLATE",
+      "size_bytes": 948,
+      "sha256": "6514BD4C3D2E9C8FED7BD5C6CBAFE61152FC79397DDBE09AA922AD0DF82D1E72"
+    },
+    {
+      "path": "templates/FOUNDATION_REVIEW.template.md",
+      "role": "CONDITIONAL_PROJECT_TEMPLATE",
+      "size_bytes": 1136,
+      "sha256": "D894211712374CD349A25F66FFD7BD6F1608F381E07EECD32C3957426C41DE5C"
+    },
+    {
+      "path": "templates/OPENING_RECORD.template.md",
+      "role": "CONDITIONAL_PROJECT_TEMPLATE",
+      "size_bytes": 1875,
+      "sha256": "247E72023C4E84465791623619FA412BBACD43EB21379E2FEC109E345E269E56"
+    },
+    {
+      "path": "templates/PROJECT_OPENING_GATE_RECORD.template.md",
+      "role": "CONDITIONAL_PROJECT_TEMPLATE",
+      "size_bytes": 1157,
+      "sha256": "60764110E8C19BDF81A76630117F289FDA3F1BB138FF03D1D7C3BF2C476E6B92"
+    },
+    {
+      "path": "templates/PROJECT_STATE.template.md",
+      "role": "CONDITIONAL_PROJECT_TEMPLATE",
+      "size_bytes": 1706,
+      "sha256": "37211C87D336292C8A5F40B05CB8EF96193A1C13474D26782B4E97EC091270F8"
+    },
+    {
+      "path": "templates/ROADMAP.template.md",
+      "role": "CONDITIONAL_PROJECT_TEMPLATE",
+      "size_bytes": 802,
+      "sha256": "D5DFA037DA3863C8E8734C24A1547589BEBF7000D1C35CA65E4FECE851F6BD72"
+    },
+    {
+      "path": "VALIDATION_EVIDENCE.md",
+      "role": "BUILD_VALIDATION_EVIDENCE",
+      "size_bytes": 6388,
+      "sha256": "24750EF7DFAA56A64871DE96A67D504E213F0E8B42CBEB56186A2864B8B3B236"
+    }
+  ],
+  "total_files": 13
+}

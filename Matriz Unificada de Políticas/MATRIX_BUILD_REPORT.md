@@ -1,0 +1,99 @@
+# GOV-01D — Canonicalização atômica da Governance Baseline V1
+
+Data: 2026-09-25
+Entrada factual: GOV-01C, que registrou GOVERNANCE_BASELINE_V1_READY_FOR_USER_CANONICALIZATION = YES.
+Autorização: explícita do usuário, registrada antes da escrita.
+
+STATUS = COMPLETED
+ACTIVITY_COMPLETION_PERCENT = 100
+COMPLETION_BASIS = Preflight confirmado; promoção, supersession, movimentação e validações exigidas concluídas.
+GOVERNANCE_BASELINE = V1
+GOVERNANCE_BASELINE_STATUS = CANONICAL
+GOVERNANCE_BASELINE_LIFECYCLE = ACTIVE
+GOVERNANCE_CONTRACT_VERSION = 1
+GOVERNANCE_BASELINE_V1_CANONICAL = YES
+READY_FOR_GOV02 = YES
+SAFE_RESUME_POINT = GOV-02 — CONTINUITY 3.0
+GOV02_STARTED = NO
+
+## Estados operacionais
+
+MATRIX_STATUS = CANONICAL / ACTIVE
+PM00_STATUS = CANONICAL / ACTIVE
+PM01_STATUS = CANONICAL / ACTIVE
+PM02_STATUS = CANONICAL / ACTIVE
+PM03_STATUS = CANONICAL / ACTIVE
+PM04_V12_STATUS = CANONICAL / ACTIVE
+PM04_V11_STATUS = SUPERSEDED / HISTORICAL
+PM05_STATUS = CANONICAL / ACTIVE
+VP01_V20_STATUS = CANONICAL / ACTIVE / VALIDATION_ONLY
+VP01_V10_STATUS = SUPERSEDED / HISTORICAL
+PM04_V12_CHANGE_TYPE = CROSS_POLICY_ALIGNMENT_ONLY
+VP01_V20_AUTHORITY_SCOPE = VALIDATION_ONLY
+
+## Validação pós-promoção
+
+MATRIX_REGISTRY_ALIGNMENT = PASS
+CROSS_POLICY_ALIGNMENT = PASS
+PM01_VP01_ALIGNMENT = PASS
+ONE_NORMATIVE_OWNER_PER_RULE = PASS
+ONE_OPERATIONAL_CURRENT_VERSION_PER_ID = PASS
+DUPLICATE_ACTIVE_AUTHORITY = NONE
+FALSE_PROMOTION = NONE
+REGISTRY_VALIDATION = PASS
+JSON_VALIDATION = PASS
+HASH_VALIDATION = PASS
+PLACEHOLDER_VALIDATION = PASS
+GOVERNANCE_CONTRACT_VERSION = 1
+
+ONE_OPERATIONAL_CURRENT_VERSION_PER_POLICY_ID = REQUIRED
+ONE_OPERATIONAL_CURRENT_VERSION_PER_PROTOCOL_ID = REQUIRED
+SELF_DECLARED_COMPLIANCE != EVIDENCE = PRESERVED
+READ_ONLY_VALIDATION = PRESERVED
+VP01_CREATES_NEW_POLICY = NO
+VP01_PROMOTES_CANDIDATES = NO
+
+## Hashes governados atuais e históricos
+
+REGISTRY_HASH == CURRENT_FILE_HASH = PASS
+SOURCE_IMPORT_HASH e CURRENT_GOVERNED_HASH permanecem campos distintos quando há proveniência de importação.
+
+Artefato | Caminho governado | CURRENT_GOVERNED_HASH
+PM-00 v1.0 | Politica-Matriz-de-Governanca-de-Projetos-v1.0.md | 8dc9998ad1282b3c8689c4a8db1df87c15ef049cc8526afbcf3dfdb0b53b27d8
+PM-01 v1.0 | policies\PM-01-Conducao-de-Projetos-v1.0.md | b0782078a57fde833577e6b46fe3cd32048dae14569cac5ba9d821aafd1b54fa
+PM-02 R2.5 | policies\Politica-Prompts-Agente-v1.7-R2.5.md | 237f64013030c2989847f23239c1ab6d865758fdf8a9ee86ce4193c6a9d47d74
+PM-03 R2.2 | policies\AGENTS-Multiagente-Generico-v1.7-R2.2-Roteamento-Economico.md | 009e2506c5edae060749af31e3420348bdfeebccfe610a5d42b0f3faee6c043b
+PM-04 v1.2 | policies\Politica-de-Uso-de-Skills-e-Plugins-Codex-Work-v1.2.md | 28d2dd8212af9eb27a2ac66d9cbe48bccfebf68bb51bb1ce1fc4b84358125179
+PM-05 v1 | policies\Independencia-Analitica-Agente-v1.md | d668de8bdaeea16403f4909678448b59705f094302bc2fe90203c2f3cc62a94e
+PM-04 v1.1 historical | policies\Politica-de-Uso-de-Skills-e-Plugins-Codex-Work-v1.1.md | 7957aaf1625499b986e83ddda1b8acb7f271a08faacbabda87d0da5342864db9
+VP-01 v2.0 | validation\Gate-de-Internalizacao-Operacional-v2.0.md | aa0b351f939317eb584467e9b7a3d5bd823bafc47ec0a415e6cade38cf2f31d6
+VP-01 v1.0 historical snapshot | C:\Users\walac\desenvolvimento\governança_de_projetos\Protocolos para Projetos - Vigente\Protocolo Inicio de Abertura de Projeto 2.0\Agent-Continuity-Standard-v1.0\policies\gate-de-internalizacao-operacional-teste-de-validacao-do-novo-agente.md | 62550cb36876bcf6403aa65783f1117e7335fa7d8ed4fbd1fb686baf7c4377cd
+
+## Protocolos 2.0
+
+PROTOCOL_2_0_PACKAGES = PRE_MATRIX_LEGACY_BASELINE
+PROTOCOL_2_0_MUTATION_DURING_GOV01D = PROHIBITED
+EMBEDDED_POLICY_OR_VALIDATION_COPIES_IN_PROTOCOL_2_0 = PACKAGE_LOCAL_LEGACY_SNAPSHOTS
+EMBEDDED_LEGACY_COPY != CURRENT_GLOBAL_GOVERNANCE_AUTHORITY
+FIRST_PROTOCOL_GENERATION_NATIVE_TO_GOVERNANCE_CONTRACT_V1 = 3.0
+PROTOCOL_2_0_FILES_CHANGED = NONE
+Os dois pacotes 2.0 foram hash-verificados antes e depois: 56 arquivos. Permanecem como baseline legado/rollback. A migração ocorrerá em GOV-02 e GOV-03.
+
+## Arquivos inspecionados
+
+POLICY_REGISTRY.json, README.md, MATRIX_BUILD_REPORT.md, PREWRITE_AUDIT.md, PM-00 v1.0, PM-01 v1.0, PM-02 R2.5, PM-03 R2.2, PM-04 v1.1, PM-04 v1.2 candidata, PM-05 v1, VP-01 v2.0, snapshot VP-01 v1.0 e 56 arquivos dos dois pacotes 2.0.
+
+## Arquivos alterados
+
+PM-00 v1.0; PM-01 v1.0; PM-04 v1.1 (estado histórico e supersession); PM-04 v1.2; VP-01 v2.0 (estado e supersession); POLICY_REGISTRY.json; README.md; MATRIX_BUILD_REPORT.md.
+
+FILES_MOVED = policies/review-candidates/Politica-de-Uso-de-Skills-e-Plugins-Codex-Work-v1.2-PROPOSED.md -> policies/Politica-de-Uso-de-Skills-e-Plugins-Codex-Work-v1.2.md
+FILES_MOVED = 1
+UNAUTHORIZED_CHANGES = NONE
+GIT_ACTIONS = NONE
+PROTOCOL_2_0_FILES_CHANGED = NONE
+GOV02_STARTED = NO
+GOVERNANCE_BASELINE_V1_CANONICAL = YES
+READY_FOR_GOV02 = YES
+SAFE_RESUME_POINT = GOV-02 — CONTINUITY 3.0
+FINAL_VERDICT = Governance Baseline V1 canonicalizada e validada. GOV-02 permanece não iniciado.
