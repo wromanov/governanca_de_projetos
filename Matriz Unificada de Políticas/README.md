@@ -8,9 +8,9 @@ Este README é uma visão descritiva; as authorities normativas permanecem na Ma
 
 - PM-00 v1.0: matriz canônica de arquitetura da governança.
 - PM-01 v1.0: condução, integração, avanço, continuidade e rastreabilidade de projetos.
-- PM-02 R2.5: geração de prompts e recomendação de roteamento.
-- PM-03 R2.2: execução DIRECT vs MULTIAGENT e delegação.
-- PM-04 v1.2: uso de capacidades, skills e plugins; alinhamento operacional com PM-02 R2.5.
+- PM-02 R2.6: geração de prompts e recomendação de roteamento.
+- PM-03 R2.3: execução DIRECT vs MULTIAGENT e delegação.
+- PM-04 v1.2: uso de capacidades, skills e plugins; alinhamento operacional com PM-02 R2.6.
 - PM-05 v1: independência analítica, evidência e qualidade decisória.
 - VP-01 v2.0: protocolo canônico de validação, com AUTHORITY_SCOPE = VALIDATION_ONLY.
 
@@ -18,7 +18,7 @@ PM-04 v1.1 e VP-01 v1.0 estão SUPERSEDED / HISTORICAL. Suas versões histórica
 
 ## Estrutura
 
-- policies/ contém as policies operacionais atuais e a PM-04 v1.1 histórica.
+- policies/ contém as policies operacionais atuais e as versões históricas supersedidas.
 - validation/ contém VP-01 v2.0, separado das subpolicies; é read-only e não cria policies nem promove candidates.
 - POLICY_REGISTRY.json registra identidade, estado, proveniência, supersession, baseline e hashes.
 - MATRIX_BUILD_REPORT.md registra GOV-01C como evidência de entrada e os resultados desta canonicalização.

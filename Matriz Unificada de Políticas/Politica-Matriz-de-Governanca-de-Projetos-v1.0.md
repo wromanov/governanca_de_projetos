@@ -43,8 +43,8 @@ Cada regra normativa tem uma única authority proprietária. Outros documentos p
 | ID | Policy | Responsabilidade normativa |
 |---|---|---|
 | PM-01 | `policies/PM-01-Conducao-de-Projetos-v1.0.md` | Condução de projetos: roadmap, phases, delivery units, slices, activities, integração incremental, DoR, DoD, progresso, avanço, continuidade, rastreabilidade e handoff. |
-| PM-02 | `policies/Politica-Prompts-Agente-v1.7-R2.5.md` | Geração de prompts, seleção de modelo e esforço, Card A/Card B, payload do executor e recomendação de roteamento. |
-| PM-03 | `policies/AGENTS-Multiagente-Generico-v1.7-R2.2-Roteamento-Economico.md` | Execução DIRECT vs MULTIAGENT, papéis, delegação, roteamento econômico, perfis registrados e gates multiagente. |
+| PM-02 | `policies/Politica-Prompts-Agente-v1.7-R2.6.md` | Geração de prompts, seleção de modelo e esforço, Card A/Card B, payload do executor e recomendação de roteamento. |
+| PM-03 | `policies/AGENTS-Multiagente-Generico-v1.7-R2.3-Roteamento-Economico.md` | Execução DIRECT vs MULTIAGENT, papéis, delegação, roteamento econômico, perfis registrados e gates multiagente. |
 | PM-04 | `policies/Politica-de-Uso-de-Skills-e-Plugins-Codex-Work-v1.2.md` | Execução nativa, skills, plugins, disponibilidade, invocação e permissões. |
 | PM-05 | `policies/Independencia-Analitica-Agente-v1.md` | Independência analítica, evidência e lógica, qualidade decisória e disciplina epistêmica. |
 
@@ -156,8 +156,8 @@ GOVERNANCE_CONTRACT_VERSION = 1
 |---|---|
 | PM-00 | v1.0 |
 | PM-01 | v1.0 |
-| PM-02 | R2.5 |
-| PM-03 | R2.2 |
+| PM-02 | R2.6 |
+| PM-03 | R2.3 |
 | PM-04 | v1.2 |
 | PM-05 | v1 |
 | VP-01 | v2.0 — VALIDATION_ONLY |

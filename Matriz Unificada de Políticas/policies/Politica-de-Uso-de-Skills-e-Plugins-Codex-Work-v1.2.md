@@ -901,7 +901,7 @@ O snapshot não substitui consulta ao Plugin Management.
 
 # 20. Alinhamento com a Política de Geração de Prompts
 
-A `Politica-Prompts-Agente-v1.7-R2.5.md` é a authority vigente para geração de prompts multiagente.
+A `Politica-Prompts-Agente-v1.7-R2.6.md` é a authority vigente para geração de prompts multiagente.
 
 Esta versão v1.2 preserva o refinamento de ordem e semântica:
 
@@ -911,11 +911,11 @@ MODELO + ESFORÇO + SKILL + PLUGIN
 
 devem aparecer juntos no cabeçalho do prompt.
 
-A PM-04 v1.2 alinha suas referências operacionais à PM-02 R2.5. A versão v1.1 foi supersedida e permanece apenas como registro histórico.
+A PM-04 v1.2 alinha suas referências operacionais à PM-02 R2.6. A versão v1.1 foi supersedida e permanece apenas como registro histórico.
 
 ```text
 PROMPT_POLICY_SYNC_REQUIRED = NO
-PROMPT_POLICY_CURRENT_AUTHORITY = Politica-Prompts-Agente-v1.7-R2.5.md
+PROMPT_POLICY_CURRENT_AUTHORITY = Politica-Prompts-Agente-v1.7-R2.6.md
 SYNC_ACTION_AUTHORIZED = YES
 CANONICAL_REFERENCE_ALIGNMENT = COMPLETE
 SILENT_CROSS_POLICY_DRIFT = PROHIBITED

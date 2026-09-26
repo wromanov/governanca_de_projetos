@@ -9,11 +9,11 @@
     "canonicalization": "YES",
     "user_review_required": false,
     "normative_owner": "GOVERNANCE_SYSTEM_ARCHITECTURE",
-    "sha256": "8dc9998ad1282b3c8689c4a8db1df87c15ef049cc8526afbcf3dfdb0b53b27d8",
+    "sha256": "db6853c74efccda0d74039bd0d466f7c1b532789f4861e3107a0f3760bae5f0f",
     "current_governed_path": "Politica-Matriz-de-Governanca-de-Projetos-v1.0.md",
     "source_path": "C:\\Users\\walac\\.codex\\attachments\\45cbff58-e6da-494b-a6cc-1bf09399b070\\Texto colado.txt",
     "source_sha256": "e0b096e092b4ba38733419f0e65e32236ad1e2f9d677bef9943c1c85ed67c49e",
-    "current_governed_hash": "8dc9998ad1282b3c8689c4a8db1df87c15ef049cc8526afbcf3dfdb0b53b27d8",
+    "current_governed_hash": "db6853c74efccda0d74039bd0d466f7c1b532789f4861e3107a0f3760bae5f0f",
     "source_import_hash": "e0b096e092b4ba38733419f0e65e32236ad1e2f9d677bef9943c1c85ed67c49e"
   },
   "policies": [
@@ -42,51 +42,61 @@
     },
     {
       "policy_id": "PM-02",
-      "file": "policies/Politica-Prompts-Agente-v1.7-R2.5.md",
-      "version": "1.7-R2.5",
+      "file": "policies/Politica-Prompts-Agente-v1.7-R2.6.md",
+      "version": "1.7-R2.6",
       "status": "CANONICAL",
       "lifecycle": "ACTIVE",
       "scope": "TRANSVERSAL",
       "responsibility": "Geração de prompts, modelo, esforço, Card A/Card B, payload executor e recomendação de roteamento",
       "normative_owner": "PM-02",
-      "source_path": "C:\\Users\\walac\\desenvolvimento\\governança_de_projetos\\Políticas - Consulta Rápida\\Atuais\\Politica-Prompts-Agente-v1.7-R2.5.md",
-      "sha256": "237f64013030c2989847f23239c1ab6d865758fdf8a9ee86ce4193c6a9d47d74",
-      "supersedes": [],
+      "source_path": "C:\\Users\\walac\\desenvolvimento\\governança_de_projetos\\Atualização de politica Multagentes\\Politica-Prompts-Agente-v1.7-R2.6-GPT6-CANDIDATE.md",
+      "sha256": "0bd42fad5f867e703aaacd4ce89c02a2ac21404657ee20d85646efd3ba8a8a6f",
+      "supersedes": [
+        "1.7-R2.5"
+      ],
+      "promotion": "YES",
       "loads_with": [
         "Prompt generation",
         "Multiagent routing"
       ],
-      "current_governed_path": "policies/Politica-Prompts-Agente-v1.7-R2.5.md",
-      "source_sha256": "237f64013030c2989847f23239c1ab6d865758fdf8a9ee86ce4193c6a9d47d74",
+      "current_governed_path": "policies/Politica-Prompts-Agente-v1.7-R2.6.md",
+      "source_sha256": "bfe7dc46f095c9a800c9a92490e9e73571df8860f4e9f7f5eee9698d25b83444",
       "owner_policy_id": "PM-02",
       "canonicalization": "YES",
       "user_review_required": false,
-      "current_governed_hash": "237f64013030c2989847f23239c1ab6d865758fdf8a9ee86ce4193c6a9d47d74",
-      "source_import_hash": "237f64013030c2989847f23239c1ab6d865758fdf8a9ee86ce4193c6a9d47d74"
+      "supersession_status": "EXECUTED",
+      "baseline_role": "CURRENT_CANONICAL",
+      "current_governed_hash": "0bd42fad5f867e703aaacd4ce89c02a2ac21404657ee20d85646efd3ba8a8a6f",
+      "source_import_hash": "bfe7dc46f095c9a800c9a92490e9e73571df8860f4e9f7f5eee9698d25b83444"
     },
     {
       "policy_id": "PM-03",
-      "file": "policies/AGENTS-Multiagente-Generico-v1.7-R2.2-Roteamento-Economico.md",
-      "version": "1.7-R2.2",
+      "file": "policies/AGENTS-Multiagente-Generico-v1.7-R2.3-Roteamento-Economico.md",
+      "version": "1.7-R2.3",
       "status": "CANONICAL",
       "lifecycle": "ACTIVE",
       "scope": "ANY GOVERNED PROJECT / AGENT",
       "responsibility": "DIRECT vs MULTIAGENT, roles, delegation, economic routing, registered profiles, multiagent gates",
       "normative_owner": "PM-03",
-      "source_path": "C:\\Users\\walac\\desenvolvimento\\governança_de_projetos\\Políticas - Consulta Rápida\\Atuais\\AGENTS-Multiagente-Generico-v1.7-R2.2-Roteamento-Economico.md",
-      "sha256": "009e2506c5edae060749af31e3420348bdfeebccfe610a5d42b0f3faee6c043b",
-      "supersedes": [],
+      "source_path": "C:\\Users\\walac\\desenvolvimento\\governança_de_projetos\\Atualização de politica Multagentes\\AGENTS-Multiagente-Generico-v1.7-R2.3-GPT6-CANDIDATE.md",
+      "sha256": "cfbb1cd363e6b1c6815918747fe12ce0ad2b35388d0aed0a1d2ca66b742b66aa",
+      "supersedes": [
+        "1.7-R2.2"
+      ],
+      "promotion": "YES",
       "loads_with": [
         "Prompt generation",
         "Multiagent routing"
       ],
-      "current_governed_path": "policies/AGENTS-Multiagente-Generico-v1.7-R2.2-Roteamento-Economico.md",
-      "source_sha256": "009e2506c5edae060749af31e3420348bdfeebccfe610a5d42b0f3faee6c043b",
+      "current_governed_path": "policies/AGENTS-Multiagente-Generico-v1.7-R2.3-Roteamento-Economico.md",
+      "source_sha256": "4a64af606f23488b1f0d2ee1ecb0dd7413d0da270917dcd45c069555934fe4e1",
       "owner_policy_id": "PM-03",
       "canonicalization": "YES",
       "user_review_required": false,
-      "current_governed_hash": "009e2506c5edae060749af31e3420348bdfeebccfe610a5d42b0f3faee6c043b",
-      "source_import_hash": "009e2506c5edae060749af31e3420348bdfeebccfe610a5d42b0f3faee6c043b"
+      "supersession_status": "EXECUTED",
+      "baseline_role": "CURRENT_CANONICAL",
+      "current_governed_hash": "cfbb1cd363e6b1c6815918747fe12ce0ad2b35388d0aed0a1d2ca66b742b66aa",
+      "source_import_hash": "4a64af606f23488b1f0d2ee1ecb0dd7413d0da270917dcd45c069555934fe4e1"
     },
     {
       "policy_id": "PM-04",
@@ -102,14 +112,14 @@
       "review_scope": "CROSS_POLICY_REFERENCE_ALIGNMENT_ONLY",
       "source_path": "C:\\Users\\walac\\desenvolvimento\\governança_de_projetos\\Políticas - Consulta Rápida\\Atuais\\Politica-de-Uso-de-Skills-e-Plugins-Codex-Work-v1.1.md",
       "source_sha256": "3704a9da77e090980b05127c5760ee6f4b4acd5eb405074d3adea6ff4227d405",
-      "sha256": "28d2dd8212af9eb27a2ac66d9cbe48bccfebf68bb51bb1ce1fc4b84358125179",
+      "sha256": "e0664fc460008401936c334d80afbd46fe94944391aa0938d56a339853129016",
       "supersedes": [
         "1.1"
       ],
       "replaces_canonical_only_after_user_review_and_canonicalization": true,
       "supersession_status": "EXECUTED",
       "change_type": "CROSS_POLICY_ALIGNMENT_ONLY",
-      "current_governed_hash": "28d2dd8212af9eb27a2ac66d9cbe48bccfebf68bb51bb1ce1fc4b84358125179",
+      "current_governed_hash": "e0664fc460008401936c334d80afbd46fe94944391aa0938d56a339853129016",
       "source_import_hash": "3704a9da77e090980b05127c5760ee6f4b4acd5eb405074d3adea6ff4227d405",
       "baseline_role": "SUPERSEDED_HISTORICAL_PREDECESSOR"
     },
@@ -213,6 +223,60 @@
   "review_candidates": [],
   "historical_policies": [
     {
+      "policy_id": "PM-02",
+      "file": "policies/Politica-Prompts-Agente-v1.7-R2.5.md",
+      "version": "1.7-R2.5",
+      "status": "SUPERSEDED",
+      "lifecycle": "HISTORICAL",
+      "scope": "TRANSVERSAL",
+      "responsibility": "Geração de prompts, modelo, esforço, Card A/Card B, payload executor e recomendação de roteamento",
+      "normative_owner": "PM-02",
+      "source_path": "C:\\Users\\walac\\desenvolvimento\\governança_de_projetos\\Políticas - Consulta Rápida\\Atuais\\Politica-Prompts-Agente-v1.7-R2.5.md",
+      "sha256": "cd3511480f712f14e1194549bd05cb64c9b7ae6a86a9047947b478c9dae082df",
+      "supersedes": [],
+      "loads_with": [
+        "Prompt generation",
+        "Multiagent routing"
+      ],
+      "current_governed_path": "policies/Politica-Prompts-Agente-v1.7-R2.5.md",
+      "source_sha256": "237f64013030c2989847f23239c1ab6d865758fdf8a9ee86ce4193c6a9d47d74",
+      "owner_policy_id": "PM-02",
+      "canonicalization": "YES",
+      "user_review_required": false,
+      "superseded_by": "1.7-R2.6",
+      "supersession_status": "EXECUTED",
+      "current_governed_hash": "cd3511480f712f14e1194549bd05cb64c9b7ae6a86a9047947b478c9dae082df",
+      "source_import_hash": "237f64013030c2989847f23239c1ab6d865758fdf8a9ee86ce4193c6a9d47d74",
+      "current_global_authority": false
+    },
+    {
+      "policy_id": "PM-03",
+      "file": "policies/AGENTS-Multiagente-Generico-v1.7-R2.2-Roteamento-Economico.md",
+      "version": "1.7-R2.2",
+      "status": "SUPERSEDED",
+      "lifecycle": "HISTORICAL",
+      "scope": "ANY GOVERNED PROJECT / AGENT",
+      "responsibility": "DIRECT vs MULTIAGENT, roles, delegation, economic routing, registered profiles, multiagent gates",
+      "normative_owner": "PM-03",
+      "source_path": "C:\\Users\\walac\\desenvolvimento\\governança_de_projetos\\Políticas - Consulta Rápida\\Atuais\\AGENTS-Multiagente-Generico-v1.7-R2.2-Roteamento-Economico.md",
+      "sha256": "61d8a8caf1d4b3834e16d1c5a70513544ffd458fe22447d83bcf78ab014ef690",
+      "supersedes": [],
+      "loads_with": [
+        "Prompt generation",
+        "Multiagent routing"
+      ],
+      "current_governed_path": "policies/AGENTS-Multiagente-Generico-v1.7-R2.2-Roteamento-Economico.md",
+      "source_sha256": "009e2506c5edae060749af31e3420348bdfeebccfe610a5d42b0f3faee6c043b",
+      "owner_policy_id": "PM-03",
+      "canonicalization": "YES",
+      "user_review_required": false,
+      "superseded_by": "1.7-R2.3",
+      "supersession_status": "EXECUTED",
+      "current_governed_hash": "61d8a8caf1d4b3834e16d1c5a70513544ffd458fe22447d83bcf78ab014ef690",
+      "source_import_hash": "009e2506c5edae060749af31e3420348bdfeebccfe610a5d42b0f3faee6c043b",
+      "current_global_authority": false
+    },
+    {
       "policy_id": "PM-04",
       "file": "policies/Politica-de-Uso-de-Skills-e-Plugins-Codex-Work-v1.1.md",
       "version": "1.1",
@@ -268,8 +332,8 @@
     "operational_current_versions": {
       "PM-00": "1.0",
       "PM-01": "1.0",
-      "PM-02": "1.7-R2.5",
-      "PM-03": "1.7-R2.2",
+      "PM-02": "1.7-R2.6",
+      "PM-03": "1.7-R2.3",
       "PM-04": "1.2",
       "PM-05": "v1",
       "VP-01": "v2.0"
