@@ -61,14 +61,14 @@
     },
     {
       "id": "PM-02",
-      "version": "R2.5",
+      "version": "1.7-R2.6",
       "role": "POLICY",
       "status": "CANONICAL / ACTIVE",
       "resolution": "Resolve externally through the configured Governance Baseline Matrix/Registry; do not vendor a copy."
     },
     {
       "id": "PM-03",
-      "version": "R2.2",
+      "version": "1.7-R2.3",
       "role": "POLICY",
       "status": "CANONICAL / ACTIVE",
       "resolution": "Resolve externally through the configured Governance Baseline Matrix/Registry; do not vendor a copy."
