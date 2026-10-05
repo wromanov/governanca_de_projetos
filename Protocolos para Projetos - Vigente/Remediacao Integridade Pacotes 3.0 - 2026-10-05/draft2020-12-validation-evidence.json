@@ -1,0 +1,390 @@
+{
+  "status": "PASS",
+  "activity_completion_percent": 100,
+  "completion_basis": "Draft 2020-12 schema check and all required refs passed; package hashes and manifests matched.",
+  "files_created": [
+    "draft2020-12-validation-evidence.json",
+    "draft2020-12-validation-report.md",
+    "validate_protocol_json_schemas.py",
+    "run_draft2020_12_validation.ps1",
+    "requirements-validator.txt"
+  ],
+  "files_updated": [],
+  "findings": [
+    "Opening 3.0 declares the sibling Continuity schema dependency; that target exists and passed validation.",
+    "No normative JSON instance fixtures were present, so instance validation was not fabricated.",
+    "PM-02 R2.5 and PM-03 R2.2 were left unchanged."
+  ],
+  "blockers": [],
+  "next_required_activity": "Separate normative review of stale active PM-02 and PM-03 references remains before Continuity authority adoption.",
+  "validation_timestamp": "2026-10-05T18:19:48.530511-03:00",
+  "python_version": "3.13.1",
+  "jsonschema_version": "4.26.0",
+  "referencing_version": "0.37.0",
+  "validator_class": "jsonschema.Draft202012Validator",
+  "draft_2020_12_validator_used": true,
+  "source_archives": {
+    "opening": {
+      "path": "C:\\Users\\walacedelgado\\PycharmProjects\\governanca_de_projetos\\Protocolos para Projetos - Vigente\\Remediacao Integridade Pacotes 3.0 - 2026-10-05\\PROJECT_OPENING_3.0-REMEDIATED-MANIFEST-MATCHED.zip",
+      "expected_sha256": "737be69e02819eff07ce68de22d1872bc0d6489e47d6ffcab87b2662fe795914",
+      "actual_sha256": "737be69e02819eff07ce68de22d1872bc0d6489e47d6ffcab87b2662fe795914",
+      "sha256_match": true,
+      "size_bytes": 23351
+    },
+    "continuity": {
+      "path": "C:\\Users\\walacedelgado\\PycharmProjects\\governanca_de_projetos\\Protocolos para Projetos - Vigente\\Remediacao Integridade Pacotes 3.0 - 2026-10-05\\CONTINUITY_3.0-REMEDIATED-MANIFEST-MATCHED.zip",
+      "expected_sha256": "430d3671826a7e1887a7282cf966869c9d74cc5f7382c5b9c6767eaf09fb8e2e",
+      "actual_sha256": "430d3671826a7e1887a7282cf966869c9d74cc5f7382c5b9c6767eaf09fb8e2e",
+      "sha256_match": true,
+      "size_bytes": 10010
+    }
+  },
+  "fresh_extraction_roots": {
+    "opening": "C:\\Users\\walacedelgado\\AppData\\Local\\Temp\\protocol-schema-validation-39133568ee934b7bbabcc595ee0eaf7a\\opening\\Protocolo Inicio de Abertura de Projeto 3.0",
+    "continuity": "C:\\Users\\walacedelgado\\AppData\\Local\\Temp\\protocol-schema-validation-39133568ee934b7bbabcc595ee0eaf7a\\continuity\\Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0"
+  },
+  "zip_to_extraction_checks": {
+    "opening": {
+      "zip_members": 14,
+      "extracted_files": 14,
+      "all_bytes_identical": true,
+      "members": [
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/OPENING_PROTOCOL.md",
+          "relative_path": "OPENING_PROTOCOL.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/OPENING_WIZARD.md",
+          "relative_path": "OPENING_WIZARD.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/START_HERE.md",
+          "relative_path": "START_HERE.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/templates/ACTIVE_AUTHORITY_MAP.template.md",
+          "relative_path": "templates/ACTIVE_AUTHORITY_MAP.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/templates/CONTINUITY_RECORD.template.md",
+          "relative_path": "templates/CONTINUITY_RECORD.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/templates/CONTINUITY_START_HERE.template.md",
+          "relative_path": "templates/CONTINUITY_START_HERE.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/templates/DELIVERY_PLAN.template.md",
+          "relative_path": "templates/DELIVERY_PLAN.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/templates/FOUNDATION_REVIEW.template.md",
+          "relative_path": "templates/FOUNDATION_REVIEW.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/templates/OPENING_RECORD.template.md",
+          "relative_path": "templates/OPENING_RECORD.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/templates/PROJECT_OPENING_GATE_RECORD.template.md",
+          "relative_path": "templates/PROJECT_OPENING_GATE_RECORD.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/templates/PROJECT_STATE.template.md",
+          "relative_path": "templates/PROJECT_STATE.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/templates/ROADMAP.template.md",
+          "relative_path": "templates/ROADMAP.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/VALIDATION_EVIDENCE.md",
+          "relative_path": "VALIDATION_EVIDENCE.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Inicio de Abertura de Projeto 3.0/OPENING_MANIFEST.json",
+          "relative_path": "OPENING_MANIFEST.json",
+          "byte_identical": true
+        }
+      ]
+    },
+    "continuity": {
+      "zip_members": 5,
+      "extracted_files": 5,
+      "all_bytes_identical": true,
+      "members": [
+        {
+          "member": "Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0/CONTINUITY_PROTOCOL.md",
+          "relative_path": "CONTINUITY_PROTOCOL.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0/schemas/PROJECT_GOVERNANCE_BINDING.schema.json",
+          "relative_path": "schemas/PROJECT_GOVERNANCE_BINDING.schema.json",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0/START_HERE.md",
+          "relative_path": "START_HERE.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0/templates/NEW_AGENT_BOOTSTRAP.template.md",
+          "relative_path": "templates/NEW_AGENT_BOOTSTRAP.template.md",
+          "byte_identical": true
+        },
+        {
+          "member": "Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0/CONTINUITY_MANIFEST.json",
+          "relative_path": "CONTINUITY_MANIFEST.json",
+          "byte_identical": true
+        }
+      ]
+    }
+  },
+  "manifest_checks": {
+    "opening": {
+      "declared_files": 13,
+      "hashes_matched": 13,
+      "sizes_matched": 13,
+      "checks": [
+        {
+          "file": "OPENING_PROTOCOL.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "OPENING_WIZARD.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "START_HERE.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/ACTIVE_AUTHORITY_MAP.template.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/CONTINUITY_RECORD.template.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/CONTINUITY_START_HERE.template.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/DELIVERY_PLAN.template.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/FOUNDATION_REVIEW.template.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/OPENING_RECORD.template.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/PROJECT_OPENING_GATE_RECORD.template.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/PROJECT_STATE.template.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/ROADMAP.template.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "VALIDATION_EVIDENCE.md",
+          "hash_match": true,
+          "size_match": true
+        }
+      ]
+    },
+    "continuity": {
+      "declared_files": 4,
+      "hashes_matched": 4,
+      "sizes_matched": 4,
+      "checks": [
+        {
+          "file": "START_HERE.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "CONTINUITY_PROTOCOL.md",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "schemas/PROJECT_GOVERNANCE_BINDING.schema.json",
+          "hash_match": true,
+          "size_match": true
+        },
+        {
+          "file": "templates/NEW_AGENT_BOOTSTRAP.template.md",
+          "hash_match": true,
+          "size_match": true
+        }
+      ]
+    }
+  },
+  "files_validated": {
+    "archive_entries": {
+      "opening": 14,
+      "continuity": 5
+    },
+    "archive_entry_total": 19,
+    "json_documents_parsed": [
+      {
+        "package": "opening",
+        "file": "OPENING_MANIFEST.json"
+      },
+      {
+        "package": "continuity",
+        "file": "CONTINUITY_MANIFEST.json"
+      },
+      {
+        "package": "continuity",
+        "file": "schemas/PROJECT_GOVERNANCE_BINDING.schema.json"
+      }
+    ],
+    "json_document_count": 3
+  },
+  "schemas_validated": 1,
+  "schema_inventory": [
+    {
+      "package": "continuity",
+      "file": "schemas/PROJECT_GOVERNANCE_BINDING.schema.json",
+      "schema_id": "PROJECT_GOVERNANCE_BINDING.schema.json",
+      "declared_draft": "https://json-schema.org/draft/2020-12/schema",
+      "schema_parse": "PASS",
+      "draft_identification": "PASS",
+      "ref_count": 9,
+      "refs_resolved": 9,
+      "refs_failed": 0,
+      "check_schema": "PASS",
+      "refs": [
+        {
+          "ref_source": "#/properties/adopted_governance",
+          "ref_target": "#/$defs/adoptedGovernance",
+          "target_exists": "YES",
+          "target_id_match": "NOT_APPLICABLE",
+          "resolution_result": "PASS"
+        },
+        {
+          "ref_source": "#/properties/migration",
+          "ref_target": "#/$defs/migration",
+          "target_exists": "YES",
+          "target_id_match": "NOT_APPLICABLE",
+          "resolution_result": "PASS"
+        },
+        {
+          "ref_source": "#/$defs/authority/allOf/0",
+          "ref_target": "#/$defs/pin",
+          "target_exists": "YES",
+          "target_id_match": "NOT_APPLICABLE",
+          "resolution_result": "PASS"
+        },
+        {
+          "ref_source": "#/$defs/protocol/allOf/0",
+          "ref_target": "#/$defs/pin",
+          "target_exists": "YES",
+          "target_id_match": "NOT_APPLICABLE",
+          "resolution_result": "PASS"
+        },
+        {
+          "ref_source": "#/$defs/adoptedGovernance/properties/authorities/items",
+          "ref_target": "#/$defs/authority",
+          "target_exists": "YES",
+          "target_id_match": "NOT_APPLICABLE",
+          "resolution_result": "PASS"
+        },
+        {
+          "ref_source": "#/$defs/adoptedGovernance/properties/protocols/items",
+          "ref_target": "#/$defs/protocol",
+          "target_exists": "YES",
+          "target_id_match": "NOT_APPLICABLE",
+          "resolution_result": "PASS"
+        },
+        {
+          "ref_source": "#/$defs/migrationTarget/properties/protocols/items",
+          "ref_target": "#/$defs/protocol",
+          "target_exists": "YES",
+          "target_id_match": "NOT_APPLICABLE",
+          "resolution_result": "PASS"
+        },
+        {
+          "ref_source": "#/$defs/migration/properties/target",
+          "ref_target": "#/$defs/migrationTarget",
+          "target_exists": "YES",
+          "target_id_match": "NOT_APPLICABLE",
+          "resolution_result": "PASS"
+        },
+        {
+          "ref_source": "#/$defs/migration/properties/blocker",
+          "ref_target": "#/$defs/blocker",
+          "target_exists": "YES",
+          "target_id_match": "NOT_APPLICABLE",
+          "resolution_result": "PASS"
+        }
+      ],
+      "schema_errors": [],
+      "result": "PASS"
+    }
+  ],
+  "refs_found": 9,
+  "refs_resolved": 9,
+  "refs_failed": 0,
+  "schema_errors": [],
+  "opening_schema_validation": "PASS",
+  "opening_schema_reference": {
+    "declared_resolution": "Reuse the schema at ../Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0/schemas/PROJECT_GOVERNANCE_BINDING.schema.json; do not copy or redefine it.",
+    "expected_relative_target": "../Protocolo Continuidade Projeto Em Andamento Com Novo Agente 3.0/schemas/PROJECT_GOVERNANCE_BINDING.schema.json",
+    "reference_path_match": true,
+    "target_exists": true,
+    "target_schema_valid": true,
+    "result": "PASS"
+  },
+  "opening_schema_note": "Opening 3.0 embeds no schema and refers to its sibling Continuity 3.0 binding schema; that external contract passed Draft 2020-12 validation.",
+  "continuity_schema_validation": "PASS",
+  "project_governance_binding_schema": "PASS",
+  "project_governance_binding_schema_parse": "PASS",
+  "project_governance_binding_schema_draft": "DRAFT_2020_12",
+  "project_governance_binding_schema_check": "PASS",
+  "project_governance_binding_schema_refs": "PASS",
+  "normative_instance_fixtures_available": false,
+  "instance_validation": "NOT_RUN_NO_NORMATIVE_FIXTURES",
+  "project_opening_gate": "NOT_ASSESSED",
+  "no_silent_policy_reference_update": true,
+  "stale_policy_references_out_of_scope_and_unchanged": [
+    "PM-02 R2.5",
+    "PM-03 R2.2"
+  ]
+}
